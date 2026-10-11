@@ -183,6 +183,34 @@ Did the sections around the gap differ from their own siblings? The same adjuste
 
 None is significant. The sections whose registration was delayed by the gap look like their neighbours.
 
+### E5 · exploratory: every pause on election night (`exploratory/e5_all_gaps_2026r1.py`, output in the report folder)
+The question was whether the 19:32–19:59 gap was the only one. The method looked for runs of 2 minutes or more with
+zero events, Brazil only, from the first reception until 99.5% had been received.
+
+| Timeline | Pauses of 2 minutes or more |
+|---|---|
+| 2026 r1, BU reception (`DT_BU_RECEBIDO`) | **18:02–18:08 (6 min)**, **18:50–18:53 (3 min)**, **19:32–19:59 (27 min)** |
+| 2026 r1, municipal totalisation (`ht` in the progress files, converted to BRT) | 18:02–18:08 (6), 18:50–18:54 (4), **19:33–20:03 (30; one municipality completed at 19:45)**, plus short pauses at the start and the tail |
+| 2022 r1, BU reception (reference) | 18:14–18:20 (6 min), 20:31–20:35 (4 min) |
+| 2022 r2, BU reception (C4) | none of 5 min or more |
+
+- **Short pauses are routine.** Pauses of 3–6 minutes happened in 2022 too. Reception and municipal totalisation
+  stop and resume **together**, so these pauses come from the system, not from where the data come from.
+- **The 19:32–19:59 pause is the outlier.** It lasted 27 minutes, 4–5 times longer than any pause in 2022, and both
+  reception and totalisation stopped nationwide.
+- **Official account** (TSE, as reported by CNN Brasil and Poder360):
+  - the national ("Brasil") view of the presidential result froze at 64.81% from about 19:14 to 20:04, about 50 min;
+  - the state views kept working;
+  - the cause was congestion in data processing.
+
+  The data add a nuance. Reception was already slowing at 19:21, and it stopped from 19:32 to 19:59. Municipal
+  totalisation stopped from 19:33 to 20:03. So during part of the national freeze, the state views could not have
+  advanced either, because there was nothing new to show.
+- **Pre-registered window:** the official freeze, 19:14–20:04, lies inside the pre-registered window of 19:00–20:08
+  (F1). Its start is 14 minutes later, covered by the +15 min sensitivity window.
+- **A clock detail found here:** the `ht` times in the progress files follow each municipality's **local** clock. In
+  UTC-4 municipalities they lag BRT by 1 hour. They must be converted before any national timeline is built.
+
 ### Overall conclusion of the 2026 round-1 analysis
 1. The published national result is exactly the sum of the 499,206 public section BUs.
 2. Sections received during the freeze, during the slowdown, right after the gap and in the tail are statistically
