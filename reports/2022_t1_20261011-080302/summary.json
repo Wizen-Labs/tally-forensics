@@ -1,0 +1,107 @@
+{
+  "tool_version": "0.2.0",
+  "year": 2022,
+  "turn": 1,
+  "generated": "2026-10-11T08:12:54",
+  "ufs_present": [
+    "AC",
+    "AL",
+    "AM",
+    "AP",
+    "BA",
+    "CE",
+    "DF",
+    "ES",
+    "GO",
+    "MA",
+    "MG",
+    "MS",
+    "MT",
+    "PA",
+    "PB",
+    "PE",
+    "PI",
+    "PR",
+    "RJ",
+    "RN",
+    "RO",
+    "RR",
+    "RS",
+    "SC",
+    "SE",
+    "SP",
+    "TO",
+    "ZZ"
+  ],
+  "all_ufs_present": true,
+  "sections_total": 472028,
+  "sections_counted": 472024,
+  "sections_not_counted_by_type": {
+    "4": 4
+  },
+  "share_a_pct": 43.19755255444699,
+  "share_b_pct": 48.43071985986874,
+  "a_z_overdispersion": 1.160058890562446,
+  "integrity_violations": {
+    "I1": 0,
+    "I2": 0,
+    "I3": 0,
+    "I4": 0,
+    "I5": 14,
+    "I6": 0,
+    "I6b": 17,
+    "I7": 0
+  },
+  "primary_test": {
+    "window": "primary: freeze window",
+    "role": "primary",
+    "metric": "margin_resid_adj",
+    "start_brt": "2022-10-02 19:00:00",
+    "end_brt": "2022-10-02 20:08:00",
+    "sections_in_window_total": 230644,
+    "informative_locations": 9550,
+    "n_in": 37551,
+    "n_out": 36430,
+    "effect": -0.0005642556114555108,
+    "null_sd": 0.000513715834708724,
+    "p_value": 0.431784107946027,
+    "permutations": 2000
+  },
+  "alpha": 0.01,
+  "last_digit": {
+    "A": {
+      "n": 273334,
+      "chi2": 417.01187558079124,
+      "p_value": 3.203378015325106e-84,
+      "digits": [
+        28829,
+        28632,
+        28125,
+        28048,
+        27724,
+        27253,
+        26695,
+        26430,
+        26150,
+        25448
+      ]
+    },
+    "B": {
+      "n": 300255,
+      "chi2": 534.6144610414482,
+      "p_value": 2.210753739255545e-109,
+      "digits": [
+        31971,
+        31611,
+        30897,
+        30827,
+        30505,
+        29521,
+        29353,
+        29179,
+        28208,
+        28183
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "bins": 18,
+  "bonferroni_threshold": 0.0005555555555555556,
+  "reject_bonferroni": 0,
+  "reject_nominal": 0,
+  "min_p": 0.011494252873563218,
+  "reception_gaps": []
+}

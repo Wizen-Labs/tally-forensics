@@ -1,0 +1,8 @@
+check,description,tested,violations,examples
+I1,presidential votes (valid + blank + null + annulled) == turnout,472024,0,[]
+I2,eligible == turnout + abstentions,472024,0,[]
+I3,turnout <= eligible,472024,0,[]
+I4,section key is unique,472024,0,[]
+I5,a ballot-box serial number is used by only one section,472024,113,"['AM-2259-8-116', 'AM-2259-8-174', 'MG-47872-167-41', 'MG-47872-167-282', 'MG-46450-196-37']"
+I6,"clock order: opening < closing <= BU emission <= TSE reception (BRT, Brazil only)",471010,17,"['AM-2690-4-129', 'AM-2259-8-116', 'AM-2011-34-27', 'AM-2550-40-454', 'BA-37478-131-222']"
+I7,"no BU received by TSE before polls close (17:00 BRT, Brazil only)",471010,0,[]

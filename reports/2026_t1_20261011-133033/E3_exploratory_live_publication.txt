@@ -1,0 +1,29 @@
+﻿cs sections: 517,179; matched to bweb: 96.52%; with publication time: 96.52%
+
+lag reception -> cs timestamp (min), Brazil:
+count    497897.0
+mean        368.8
+std         285.7
+min           1.9
+5%          136.8
+25%         216.3
+50%         268.6
+75%         358.2
+95%        1086.1
+max        3931.4
+
+distinct cs timestamps (seconds): 818 | distinct reception timestamps: 9011
+
+minutes 17:00-23:00 with any cs timestamp: 36 of 361
+largest cs batches (minute: sections): {'22:59': 40750, '22:44': 27142, '23:00': 25107, '21:56': 17240, '22:39': 15686, '21:12': 13848, '21:13': 13699, '20:57': 9844, '21:32': 8287, '21:06': 7106, '22:08': 5923, '22:54': 5152}
+  by 18:00: published   0.0%  | received  14.4%
+  by 18:30: published   0.0%  | received  34.6%
+  by 19:00: published   0.0%  | received  58.9%
+  by 19:15: published   0.0%  | received  73.1%
+  by 19:30: published   0.0%  | received  81.9%
+  by 20:00: published   0.0%  | received  83.4%
+  by 20:08: published   0.0%  | received  86.7%
+  by 20:30: published   1.4%  | received  88.8%
+  by 21:00: published   4.2%  | received  95.2%
+
+cs timestamps between 19:00 and 20:10 by minute: {}

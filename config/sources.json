@@ -1,0 +1,26 @@
+{
+  "_comment": "TSE open-data sources. Data, not code: if TSE republishes a file with a new generation stamp, change it here and record the change in CHANGELOG.md.",
+  "bweb": {
+    "2026": {
+      "1": {
+        "stamp": "051020261403",
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_{uf}_{stamp}.zip",
+        "dataset_page": "https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna"
+      }
+    },
+    "2022": {
+      "1": {
+        "stamp": "051020221321",
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/buweb/bweb_1t_{uf}_{stamp}.zip",
+        "dataset_page": "https://dadosabertos.tse.jus.br/dataset/resultados-2022-boletim-de-urna"
+      },
+      "2": {
+        "stamp": "311020221535",
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2022/buweb/bweb_2t_{uf}_{stamp}.zip",
+        "dataset_page": "https://dadosabertos.tse.jus.br/dataset/resultados-2022-boletim-de-urna"
+      }
+    }
+  },
+  "ufs": ["AC", "AL", "AM", "AP", "BA", "CE", "DF", "ES", "GO", "MA", "MG", "MS", "MT", "PA",
+          "PB", "PE", "PI", "PR", "RJ", "RN", "RO", "RR", "RS", "SC", "SE", "SP", "TO", "ZZ"]
+}

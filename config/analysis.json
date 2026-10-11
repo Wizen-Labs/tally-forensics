@@ -1,0 +1,32 @@
+﻿{
+  "_comment": "Pre-registered analysis parameters (see METHODOLOGY.md). Changing any value after the confirmatory run is a protocol deviation and must be logged in FINDINGS.md.",
+  "protocol_frozen": true,
+  "office_code": "1",
+  "candidates": {
+    "2026": {"A": {"nr": "22", "name": "Flavio Bolsonaro"}, "B": {"nr": "13", "name": "Lula"}},
+    "2022": {"A": {"nr": "22", "name": "Jair Bolsonaro"}, "B": {"nr": "13", "name": "Lula"}}
+  },
+  "official_totals": {
+    "2026-1": {
+      "source": "TSE final totalisation, 100% of sections, reported by CartaCapital and Hub Politico (2026-10-05)",
+      "22": 56104503,
+      "13": 53879538
+    }
+  },
+  "polls_open_brt": "08:00",
+  "freeze_window_brt": {
+    "_source": "Press reports (Jornal de Brasilia, Agencia Brasil, 2026-10-04/05): national presidential tally stuck at ~64% from about 19:00; resumed 20:08 at 84.96%. Start time is approximate.",
+    "start": "19:00",
+    "end": "20:08",
+    "sensitivity_minutes": 15
+  },
+  "placebo_windows_brt": [
+    {"start": "17:52", "end": "19:00"},
+    {"start": "20:08", "end": "21:16"}
+  ],
+  "time_bin_minutes": 10,
+  "min_valid_votes_per_section": 30,
+  "alpha": 0.01,
+  "permutations": 2000,
+  "random_seed": 20261004
+}

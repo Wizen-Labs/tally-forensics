@@ -1,0 +1,11 @@
+check,description,tested,violations,examples
+I1,presidential votes (valid + blank + null + annulled) == turnout,499206,0,[]
+I2,eligible == turnout + abstentions,499206,0,[]
+I3,turnout <= eligible,499206,0,[]
+I4,section key is unique,499206,0,[]
+I5,"a ballot-box serial number is used by only one section (Brazil only; contingency boxes and BU recovery can explain cases, check each)",497897,0,[]
+I6,"clock order: opening < closing <= BU emission <= TSE reception (BRT, Brazil, complete clocks)",497895,60,"['AM-2615-5-119', 'AM-2615-5-120', 'MA-7404-69-295', 'MT-90905-53-93', 'MT-90905-53-89']"
+I6b,informational: sections with no opening/closing time recorded (e.g. BU recovered by contingency procedure),497897,2,"['MG-50075-47-41', 'MG-41238-39-168']"
+I7,"no BU received by TSE before polls close (17:00 BRT, Brazil only)",497897,0,[]
+R-22,sum of section BUs for #22 == official total,56104503,0,[]
+R-13,sum of section BUs for #13 == official total,53879538,0,[]

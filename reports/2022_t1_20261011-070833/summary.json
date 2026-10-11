@@ -1,0 +1,78 @@
+{
+  "tool_version": "0.1.0",
+  "year": 2022,
+  "turn": 1,
+  "generated": "2026-10-11T07:08:37",
+  "ufs_present": [
+    "AC",
+    "RR"
+  ],
+  "all_ufs_present": false,
+  "sections_total": 3392,
+  "sections_counted": 3392,
+  "sections_not_counted_by_type": {},
+  "share_a_pct": 65.35616797829258,
+  "share_b_pct": 26.75311043358051,
+  "a_z_overdispersion": 1.1706574645652945,
+  "integrity_violations": {
+    "I1": 0,
+    "I2": 0,
+    "I3": 0,
+    "I4": 0,
+    "I5": 0,
+    "I6": 0,
+    "I7": 0
+  },
+  "primary_test": {
+    "window": "primary: freeze window",
+    "role": "primary",
+    "metric": "margin_resid",
+    "start_brt": "2022-10-02 19:00:00",
+    "end_brt": "2022-10-02 20:08:00",
+    "sections_in_window_total": 1531,
+    "informative_locations": 101,
+    "n_in": 220,
+    "n_out": 278,
+    "effect": -0.007629857456208774,
+    "null_sd": 0.00750880759761475,
+    "p_value": 0.31284357821089454,
+    "permutations": 2000
+  },
+  "alpha": 0.01,
+  "last_digit": {
+    "A": {
+      "n": 2866,
+      "chi2": 2.5066294487090017,
+      "p_value": 0.9807046720239946,
+      "digits": [
+        288,
+        299,
+        294,
+        289,
+        281,
+        279,
+        293,
+        294,
+        278,
+        271
+      ]
+    },
+    "B": {
+      "n": 162,
+      "chi2": 4.790123456790124,
+      "p_value": 0.852206468414115,
+      "digits": [
+        18,
+        16,
+        21,
+        16,
+        20,
+        11,
+        16,
+        14,
+        16,
+        14
+      ]
+    }
+  }
+}

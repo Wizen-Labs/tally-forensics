@@ -1,0 +1,18 @@
+﻿
+2026: receptions per minute 19:00-20:30 BRT (min 0, median 511)
+  zero-reception minutes: 19:32-19:58 (27)
+
+2022: receptions per minute 19:00-20:30 BRT (min 2341, median 3387)
+  zero-reception minutes: none
+
+last reception before the gap: 2026-10-04 19:31:50
+first reception after the gap: 2026-10-04 19:59:22
+cumulative % of sections received before the gap: 85.2
+
+window                         metric              locations     in   effect      p
+slowdown 19:21-19:32           margin_resid_adj       2,433  7,155  -0.188pp 0.1084
+slowdown 19:21-19:32           turnout_resid_adj      2,433  7,155  +0.049pp 0.3408
+catch-up burst 19:59-20:03     margin_resid_adj       2,203  6,462  -0.193pp 0.1769
+catch-up burst 19:59-20:03     turnout_resid_adj      2,203  6,462  +0.061pp 0.3033
+slow tail 20:03-20:30          margin_resid_adj       1,992  5,747  +0.119pp 0.3303
+slow tail 20:03-20:30          turnout_resid_adj      1,992  5,747  -0.128pp 0.1659

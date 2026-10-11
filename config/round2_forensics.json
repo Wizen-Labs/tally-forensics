@@ -1,0 +1,19 @@
+{
+  "_comment": "Round-2 (2026-10-25) forensic audit parameters; see PREREGISTRATION_ROUND2.md. Frozen when protocol_frozen is true; any later change is a logged deviation.",
+  "protocol_frozen": false,
+  "election_code": "6258",
+  "pleito_code": "3221",
+  "candidates": {"A": {"nr": "22", "name": "Flavio Bolsonaro"}, "B": {"nr": "13", "name": "Lula"}},
+  "bin_minutes": 10,
+  "scan_until_share_received": 0.99,
+  "metric": "margin_resid",
+  "adjusted": true,
+  "permutations": 2000,
+  "random_seed": 20261025,
+  "alpha": 0.01,
+  "reception_gap_min_minutes": 5,
+  "reception_gap_until_share": 0.95,
+  "freeze_definition": "a period of >= 10 minutes in which the national result file (br ... -u.json) did not change in the collector archive while >= 1% of sections were received by TSE (DT_BU_RECEBIDO)",
+  "freeze_min_minutes": 10,
+  "freeze_min_share_received": 0.01
+}
