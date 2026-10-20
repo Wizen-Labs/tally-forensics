@@ -1,5 +1,9 @@
 # Changelog
 
+## v0.6.0 · 2026-10-20 (round-2 protocol frozen)
+- `PREREGISTRATION_ROUND2.md` and `config/round2_forensics.json` are frozen (tag `round2-prereg`; hashes in
+  FINDINGS).
+
 ## v0.5.0 · 2026-10-11 (round-2 audit protocol; repository reorganised)
 - The round-2 audit protocol is `PREREGISTRATION_ROUND2.md` with `config/round2_forensics.json`.
 - The CLI can be extended by optional `tally/cli_*.py` modules and runs without them.

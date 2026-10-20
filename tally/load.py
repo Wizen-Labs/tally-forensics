@@ -116,12 +116,14 @@ def add_shares(sections: pd.DataFrame, nr_a: str, nr_b: str) -> pd.DataFrame:
 
 
 def build(zip_paths: list[Path], year: int, turn: int, office_code: str = "1", log=print) -> Path:
-    """Parses every given zip and writes data/interim/sections_<year>_t<turn>.parquet."""
+    """Parses every given zip and writes data/interim/sections_<year>_t<turn>.parquet (President, office 1) or
+    sections_<year>_t<turn>_c<office>.parquet for any other office (e.g. 3 = Governor)."""
     cache = INTERIM_DIR / "per_file"
     cache.mkdir(parents=True, exist_ok=True)
+    tag = "" if office_code == "1" else f"_c{office_code}"
     frames = []
     for zp in zip_paths:
-        part = cache / f"{zp.stem}.p{PARSER_VERSION}.parquet"
+        part = cache / f"{zp.stem}{tag}.p{PARSER_VERSION}.parquet"
         if part.exists() and part.stat().st_mtime > zp.stat().st_mtime:
             log(f"[cache] {zp.name}")
             frames.append(pd.read_parquet(part))
@@ -131,7 +133,7 @@ def build(zip_paths: list[Path], year: int, turn: int, office_code: str = "1", l
         df.to_parquet(part, index=False)
         frames.append(df)
     sections = pd.concat(frames, ignore_index=True)
-    out = INTERIM_DIR / f"sections_{year}_t{turn}.parquet"
+    out = INTERIM_DIR / f"sections_{year}_t{turn}{tag}.parquet"
     sections.to_parquet(out, index=False)
     log(f"[ok]    {len(sections):,} sections -> {out.name}")
     return out

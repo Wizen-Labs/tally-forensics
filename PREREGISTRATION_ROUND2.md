@@ -1,7 +1,7 @@
 # Pre-registration: forensic audit of the 2026 presidential run-off (25 October 2026)
 
 **Project** · tally-forensics · round-2 audit protocol
-**Status** · DRAFT, **not frozen** · written 2026-10-11, before round 2 · freeze deadline 2026-10-24
+**Status** · **FROZEN** on 2026-10-20, before round 2 (git tag `round2-prereg`; hashes in FINDINGS.md)
 **Parameters** · `config/round2_forensics.json`. The code paths are listed in §4.
 **Rule** · The author freezes this document with a git tag (`round2-prereg`), and the SHA-256 hashes are recorded in
 FINDINGS.md. Any later change is a logged deviation. Every result is reported, including those that look bad.
@@ -14,7 +14,7 @@ H2r2 and H5r2.
 
 ## 1. Data
 - The round-2 bweb files, verified against TSE's SHA-512.
-- The collector archive from election night (`python -m tally live --election 6258 --interval 60`, from about 16:55
+- The collector archive from election night (`python -m tally live --election 6258 --interval 30`, from about 16:55
   BRT). It reads:
   - the national file and the 28 UF files (presidential results);
   - the 28 progress files (sections counted per municipality);

@@ -1,6 +1,6 @@
 {
   "_comment": "Round-2 (2026-10-25) forensic audit parameters; see PREREGISTRATION_ROUND2.md. Frozen when protocol_frozen is true; any later change is a logged deviation.",
-  "protocol_frozen": false,
+  "protocol_frozen": true,
   "election_code": "6258",
   "pleito_code": "3221",
   "candidates": {"A": {"nr": "22", "name": "Flavio Bolsonaro"}, "B": {"nr": "13", "name": "Lula"}},

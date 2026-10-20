@@ -103,6 +103,18 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
   - `tally/temporal.py`: `d00fbf8de8b7c314549cb7274b1d2b133747a251df3fb94e3b8d5196e27b61a7`
   - `tally/residuals.py`: `fae15ddf60f36641e6f861f8a4ebf8c924ca35779e28ea9830efc078dd2a2877`
 
+## Round-2 protocol freeze (PREREGISTRATION_ROUND2.md)
+- **When:** 2026-10-20T13:57:42+01:00, by the author's decision, before the run-off of 25 October 2026. Git tag
+  `round2-prereg`.
+- **SHA-256 of the frozen files, as published in this repository:**
+  - `PREREGISTRATION_ROUND2.md`: `cd9e80199e6bcafe316227b39b787f62b0aa556764c5ee786dd5cf799266cc1e`
+  - `config/round2_forensics.json`: `34d1b55a2a1987db66cdadf1a7b11ff4cbeafe85de9d9b7612d9c360f28d8d7d`
+  - `tally/temporal.py`: `6b039f548023761a728e1a7429e6a5777bee2bb42c281b52264b04e4b1c94674`
+  - `tally/residuals.py`: `fae15ddf60f36641e6f861f8a4ebf8c924ca35779e28ea9830efc078dd2a2877`
+  - `tally/integrity.py`: `0cef79490b0d1ecfc5540ec936f63d296d23d55765a0e7a7953055f353d0ebe1`
+  - `tally/live.py`: `521df435477fc2190a47100a7de81d31ddd851e2e8a182b4d0604329418e4101`
+- From here on, any change to these files is a logged deviation.
+
 ## Confirmatory (2026, round 1)
 
 ### F1 · 2026-10-11 · full run, protocol frozen (v0.2, `reports/2026_t1_20261011-133033`)

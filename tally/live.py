@@ -14,6 +14,7 @@ replayed later for analysis and forensics.
 import gzip
 import hashlib
 import json
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -60,6 +61,8 @@ def parse_u(j: dict) -> dict:
     """Result file (any level) -> votes per candidate number for the presidential race, plus totals."""
     out = {"generated": f"{j.get('dg', '')} {j.get('hg', '')}".strip(),
            "sections_total": _num(j.get("s", {}).get("ts")), "sections_counted": _num(j.get("s", {}).get("st")),
+           "electorate_total": _num(j.get("e", {}).get("te")),
+           "electorate_counted": _num(j.get("e", {}).get("est")),
            "blank": _num(j.get("v", {}).get("vb")), "null": _num(j.get("v", {}).get("tvn")),
            "valid": _num(j.get("v", {}).get("vv")), "votes": {}}
     for carg in j.get("carg", []):
@@ -86,7 +89,12 @@ def parse_cs(j: dict, uf: str) -> pd.DataFrame:
 # ---------------------------------------------------------------------------------------------------------- collector
 
 class Collector:
-    def __init__(self, election: str, archive: Path | None = None, workers: int = 48, uf_list=None, log=print):
+    """Polite to TSE's servers, which answered HTTP 429 to bursts in testing (FINDINGS P9): at most `max_rps`
+    requests per second across all threads, a global pause on 429 (Retry-After, else 30 s, at most 120 s), and at
+    most `max_mun_per_cycle` municipal files per cycle, largest electorates first (the rest wait one cycle)."""
+
+    def __init__(self, election: str, archive: Path | None = None, workers: int = 16, uf_list=None, log=print,
+                 max_rps: float = 15.0, max_mun_per_cycle: int = 900):
         self.election = str(election)
         self.e6 = self.election.zfill(6)
         self.archive = archive or DATA_DIR / "live" / f"{CYCLE}_e{self.e6}"
@@ -96,6 +104,9 @@ class Collector:
         self.workers = workers
         self.ufs = [u.lower() for u in (uf_list or ufs())]
         self.log = log
+        self._lock, self._rate_lock = threading.Lock(), threading.Lock()
+        self.max_rps, self._next, self.pause_until = max_rps, 0.0, 0.0
+        self.max_mun = max_mun_per_cycle
         self.validators: dict[str, tuple[str | None, str | None]] = {}
         self.latest: dict[str, str] = {}          # url -> sha256 of the latest body
         self.ab_state: dict[str, tuple] = {}      # municipality -> (counted, updated)
@@ -134,7 +145,16 @@ class Collector:
         raise ValueError(f"election {self.election} not found in ele-c.json")
 
     # HTTP with conditional requests, content-addressed storage and an append-only log
+    def _throttle(self) -> None:
+        with self._rate_lock:
+            start = max(time.time(), self._next, self.pause_until)
+            self._next = start + 1.0 / self.max_rps
+        wait = start - time.time()
+        if wait > 0:
+            time.sleep(wait)
+
     def _get(self, url: str, conditional: bool = True) -> tuple[int, bytes | None]:
+        self._throttle()
         headers = dict(UA)
         etag, lastmod = self.validators.get(url, (None, None)) if conditional else (None, None)
         if etag:
@@ -151,25 +171,31 @@ class Collector:
                 entry.update(status=status, last_modified=r.headers.get("Last-Modified"))
         except urllib.error.HTTPError as e:
             entry.update(status=e.code)
+            if e.code == 429:                         # TSE asks us to slow down: pause every thread
+                ra = (e.headers or {}).get("Retry-After", "")
+                secs = min(int(ra), 120) if str(ra).isdigit() else 30
+                with self._rate_lock:
+                    self.pause_until = max(self.pause_until, time.time() + secs)
             self._append(entry)
             return e.code, None
-        except (urllib.error.URLError, TimeoutError) as e:
-            entry.update(status=0, error=str(e)[:200])
+        except Exception as e:  # timeouts, resets, truncated reads: never let one file break the cycle
+            entry.update(status=0, error=f"{type(e).__name__}: {e}"[:200])
             self._append(entry)
             return 0, None
         sha = hashlib.sha256(body).hexdigest()
         blob = self.blobs / f"{sha}.json.gz"
-        if not blob.exists():
-            tmp = blob.with_suffix(".part")
-            tmp.write_bytes(gzip.compress(body))
-            tmp.replace(blob)
-        entry.update(sha256=sha, bytes=len(body), changed=self.latest.get(url) != sha)
-        self.latest[url] = sha
+        with self._lock:                        # parallel downloads may carry identical bodies
+            if not blob.exists():
+                tmp = blob.with_suffix(f".{threading.get_ident()}.part")
+                tmp.write_bytes(gzip.compress(body))
+                tmp.replace(blob)
+            entry.update(sha256=sha, bytes=len(body), changed=self.latest.get(url) != sha)
+            self.latest[url] = sha
         self._append(entry)
         return status, body
 
     def _append(self, entry: dict) -> None:
-        with open(self.log_path, "a", encoding="utf-8") as fh:
+        with self._lock, open(self.log_path, "a", encoding="utf-8") as fh:
             fh.write(json.dumps(entry) + "\n")
 
     def _many(self, urls: list[str]) -> dict[str, tuple[int, bytes | None]]:
@@ -183,7 +209,7 @@ class Collector:
         if with_cs:
             fixed += [self.url_cs(u) for u in self.ufs]
         res = self._many(fixed)
-        changed_mun = []
+        changed_mun, electorate = [], {}
         for uf in self.ufs:
             status, body = res[self.url_ab(uf)]
             if body is None:
@@ -194,7 +220,12 @@ class Collector:
                 state = (r.sections_counted, r.updated)
                 if r.sections_counted > 0 and self.ab_state.get(key) != state:
                     changed_mun.append((uf, r.CD_MUNICIPIO))
+                    electorate[(uf, r.CD_MUNICIPIO)] = r.electorate_total
                 self.ab_state[key] = state
+        changed_mun.sort(key=lambda k: -electorate.get(k, 0))          # largest electorates first
+        changed_mun, deferred = changed_mun[:self.max_mun], changed_mun[self.max_mun:]
+        for uf, mun in deferred:                                        # not fetched now: retried next cycle
+            self.ab_state.pop(f"{uf}:{mun}", None)
         mres = self._many([self.url_u(uf, mun) for uf, mun in changed_mun])
         for (uf, mun), (status, _) in zip(changed_mun, mres.values()):
             if status not in (200, 304):              # forget the state so the next cycle retries this file
@@ -206,6 +237,7 @@ class Collector:
             "fixed_not_modified": sum(1 for u in fixed if res[u][0] == 304),
             "fixed_errors": sum(1 for u in fixed if res[u][0] not in (200, 304)),
             "municipal_requests": len(mres),
+            "municipal_deferred": len(deferred),
             "municipal_errors": sum(1 for v in mres.values() if v[0] not in (200, 304)),
             "seconds": round(time.time() - t0, 1),
         }
@@ -238,8 +270,11 @@ def load_state(archive: Path, as_of_utc: str | None = None) -> dict:
     latest = {}
     with open(archive / "fetch_log.jsonl", encoding="utf-8") as fh:
         for line in fh:
-            e = json.loads(line)
-            if "sha256" not in e or (as_of_utc and e["t_utc"] > as_of_utc):
+            try:
+                e = json.loads(line)
+            except json.JSONDecodeError:      # a damaged line must not stop the replay; it is simply skipped
+                continue
+            if "sha256" not in e or (as_of_utc and e.get("t_utc", "") > as_of_utc):
                 continue
             latest[e["url"]] = e["sha256"]
 
@@ -262,6 +297,11 @@ def load_state(archive: Path, as_of_utc: str | None = None) -> dict:
             else:
                 mun.append({"SG_UF": uf.upper(), "CD_MUNICIPIO": str(int(area[len(uf):])),
                             **{f"v_{k}": v for k, v in parsed["votes"].items()},
-                            "blank": parsed["blank"], "null": parsed["null"]})
+                            "blank": parsed["blank"], "null": parsed["null"],
+                            # progress as stated by the SAME file as the votes (consistent snapshot)
+                            "u_sections_counted": parsed["sections_counted"],
+                            "u_sections_total": parsed["sections_total"],
+                            "u_electorate_counted": parsed["electorate_counted"],
+                            "u_electorate_total": parsed["electorate_total"]})
     return {"ab": pd.concat(ab, ignore_index=True) if ab else pd.DataFrame(),
             "municipal": pd.DataFrame(mun).fillna(0), "uf": uf_tot, "br": br}

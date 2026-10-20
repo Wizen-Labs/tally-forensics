@@ -30,7 +30,7 @@ def main(argv=None) -> None:
     extra = [c for ext in EXTENSIONS for c in ext.COMMANDS]
     ap.add_argument("command", choices=["fetch", "build", "analyze", "all", "live"] + extra)
     ap.add_argument("--election", default="6258", help="live: TSE election code (6257 = 2026 round 1, 6258 = round 2)")
-    ap.add_argument("--interval", type=int, default=60)
+    ap.add_argument("--interval", type=int, default=30)
     ap.add_argument("--until", help="live: stop at this BRT time, HH:MM")
     ap.add_argument("--once", action="store_true")
     ap.add_argument("--no-cs", action="store_true", help="live: skip the 28 section-configuration files")

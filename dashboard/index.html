@@ -1,0 +1,327 @@
+<style>
+#dash-root .pa { display: grid; gap: var(--cds-gap-xl); max-width: 72rem; margin-inline: auto; font-family: var(--font-anthropic-sans); }
+#dash-root .pa-head { display: grid; gap: var(--cds-gap-sm); }
+#dash-root .pa-eyebrow { font-size: var(--cds-font-size-caption); letter-spacing: .06em; text-transform: uppercase; color: var(--color-fg-muted); }
+#dash-root .pa-title { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.1; margin: 0; text-wrap: balance; }
+#dash-root .pa-lede { font-size: var(--cds-font-size-heading); max-width: 62ch; margin: 0; line-height: 1.45; text-wrap: pretty; }
+#dash-root .pa-lede b { font-weight: 600; }
+#dash-root .pa-kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .pa-kpi { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+#dash-root .pa-kpi-label { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+#dash-root .pa-kpi-value { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.1; font-variant-numeric: tabular-nums; }
+#dash-root .pa-kpi-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.4; }
+#dash-root .pa-chip { display: inline-block; font-size: var(--cds-font-size-caption); padding: 0 var(--cds-pad-xs); border-radius: 999px; border: 1px solid currentColor; }
+#dash-root .pa-ok { color: var(--color-ok); }
+#dash-root .pa-warn { color: var(--color-warn); }
+#dash-root .pa-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr)); gap: var(--cds-gap-md); }
+#dash-root .pa-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; min-width: 0; }
+#dash-root .pa-card h2 { font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); margin: 0; text-wrap: balance; }
+#dash-root .pa-card p.pa-note { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); margin: 0; line-height: 1.45; max-width: 70ch; }
+#dash-root .pa-section { font-size: var(--cds-font-size-caption); letter-spacing: .06em; text-transform: uppercase; color: var(--color-fg-muted); margin: 0; }
+#dash-root .pa-chart { position: relative; min-height: 18rem; }
+#dash-root .pa-chart.pa-short { min-height: 14rem; }
+#dash-root .pa-chart svg { display: block; }
+#dash-root .pa-chart text { fill: var(--color-fg-muted); font-size: 11px; font-family: var(--font-anthropic-sans); }
+#dash-root .pa-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; }
+#dash-root .pa-tip .pa-tip-head { color: var(--cds-text-secondary); }
+#dash-root .pa-legend { display: flex; flex-wrap: wrap; gap: var(--cds-gap-md); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); }
+#dash-root .pa-sw { display: inline-block; width: .75rem; height: .2rem; border-radius: 2px; vertical-align: middle; margin-right: .35rem; }
+#dash-root .pa-tablewrap { overflow-x: auto; }
+#dash-root table.pa-t { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-body); font-variant-numeric: tabular-nums; }
+#dash-root table.pa-t th { text-align: left; font-weight: var(--cds-font-weight-medium); font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); }
+#dash-root table.pa-t td { padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--color-border-line); vertical-align: top; }
+#dash-root table.pa-t td.num, #dash-root table.pa-t th.num { text-align: right; }
+#dash-root .pa-method { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: var(--cds-gap-lg); }
+#dash-root .pa-method h3 { font-size: var(--cds-font-size-body); font-weight: var(--cds-font-weight-medium); margin: 0 0 var(--cds-gap-xs); }
+#dash-root .pa-method p { margin: 0; font-size: var(--cds-font-size-body); line-height: 1.5; color: var(--color-fg); }
+#dash-root .pa-foot { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); line-height: 1.6; border-top: 1px solid var(--color-border-line); padding-top: var(--cds-pad-md); }
+#dash-root .pa-foot a { color: inherit; }
+#dash-root .pa-fail { display: flex; align-items: center; justify-content: center; gap: .4rem; min-height: inherit; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+#dash-root .pa-fail::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); }
+#dash-root [data-dash-source-state=empty] { color: transparent; }
+#dash-root [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+@media (prefers-reduced-motion: no-preference) {
+  #dash-root .pa-draw { animation: pa-in var(--cds-dur-slow) var(--cds-ease-out) both; }
+  @keyframes pa-in { from { opacity: 0; } to { opacity: 1; } }
+}
+</style>
+
+<div class="pa">
+  <header class="pa-head" id="topo">
+    <span class="pa-eyebrow">Auditoria independente · 1º turno · 4 de outubro de 2026</span>
+    <h1 class="pa-title">Perícia da apuração 2026</h1>
+    <p class="pa-lede" id="lede">
+      Periciamos <b data-source="kpis" data-field="value" data-where="metric=urnas_periciadas" class="dash-skeleton">—</b> urnas
+      com os dados públicos do TSE. A recepção de boletins parou por
+      <b data-source="kpis" data-field="value" data-where="metric=maior_pausa_2026_min" class="dash-skeleton">—</b> minutos,
+      mas não ficou rastro nos votos: a soma dos boletins difere do resultado oficial em
+      <b data-source="kpis" data-field="value" data-where="metric=diferenca_soma_boletins_flavio" class="dash-skeleton">—</b> votos.
+    </p>
+  </header>
+
+  <section class="pa-kpis" aria-label="Números principais">
+    <div class="pa-kpi">
+      <span class="pa-kpi-label">Urnas periciadas, uma a uma</span>
+      <span class="pa-kpi-value dash-skeleton" data-source="kpis" data-field="value" data-where="metric=urnas_periciadas">—</span>
+      <span class="pa-kpi-note">Todas as seções do país, com SHA-512 conferido em cada arquivo do TSE</span>
+    </div>
+    <div class="pa-kpi">
+      <span class="pa-kpi-label">Soma dos boletins − resultado oficial</span>
+      <span class="pa-kpi-value"><span class="dash-skeleton" data-source="kpis" data-field="value" data-where="metric=diferenca_soma_boletins_flavio">—</span> votos</span>
+      <span class="pa-kpi-note">Flávio e Lula batem voto a voto (Lula: <span data-source="kpis" data-field="value" data-where="metric=diferenca_soma_boletins_lula">—</span> de diferença)</span>
+    </div>
+    <div class="pa-kpi">
+      <span class="pa-kpi-label">Urnas do travamento × vizinhas</span>
+      <span class="pa-kpi-value">p = <span class="dash-skeleton" data-source="kpis" data-field="value" data-where="metric=p_teste_principal">—</span></span>
+      <span class="pa-kpi-note"><span class="pa-chip pa-ok">sem sinal</span> efeito de <span data-source="kpis" data-field="value" data-where="metric=efeito_teste_principal_pp">—</span> p.p. em <span data-source="kpis" data-field="value" data-where="metric=locais_comparados">—</span> locais de votação</span>
+    </div>
+    <div class="pa-kpi">
+      <span class="pa-kpi-label">Maior pausa na recepção de boletins</span>
+      <span class="pa-kpi-value"><span class="dash-skeleton" data-source="kpis" data-field="value" data-where="metric=maior_pausa_2026_min">—</span> min</span>
+      <span class="pa-kpi-note"><span class="pa-chip pa-warn">anomalia operacional</span> em 2022 a maior foi de <span data-source="kpis" data-field="value" data-where="metric=maior_pausa_2022_min">—</span> min</span>
+    </div>
+  </section>
+
+  <h2 class="pa-section" id="tempo">O apagão, minuto a minuto</h2>
+  <div class="pa-card">
+    <h2>Boletins de urna recebidos pelo TSE a cada minuto</h2>
+    <p class="pa-note">Horário de Brasília. Faixa clara: painel nacional travado segundo o TSE (19h14–20h04). Faixas vermelhas: minutos sem nenhum boletim recebido em 2026.</p>
+    <div class="pa-legend" id="leg-reception"></div>
+    <div class="pa-chart" id="chart-reception" data-source="reception pauses"></div>
+  </div>
+
+  <div class="pa-grid">
+    <div class="pa-card">
+      <h2>Todas as pausas da noite</h2>
+      <p class="pa-note">Sequências de 2 minutos ou mais sem nenhum boletim recebido, antes de 99,5% das urnas chegarem.</p>
+      <div class="pa-tablewrap">
+        <table class="pa-t" id="tbl-pauses" data-source="pauses" data-row-key="election,start">
+          <thead><tr><th data-field="election">Eleição</th><th data-field="start">Início</th><th data-field="end">Fim</th><th class="num" data-field="minutes">Minutos</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+    <div class="pa-card">
+      <h2>As urnas do travamento destoaram das vizinhas?</h2>
+      <p class="pa-note">Diferença média de voto (Flávio − Lula) entre urnas recebidas na janela e urnas do mesmo local de votação recebidas fora dela. Zero = idênticas. p &lt; 0,01 seria sinal.</p>
+      <div class="pa-chart pa-short" id="chart-tests" data-source="window_tests"></div>
+    </div>
+  </div>
+
+  <h2 class="pa-section" id="digital">A impressão digital da eleição</h2>
+  <div class="pa-card">
+    <h2>Comparecimento × votação por seção, para os dois candidatos</h2>
+    <p class="pa-note">Método de Klimek e colegas (PNAS, 2012). Fraude por enchimento de urna aparece como um acúmulo no canto superior direito (quadro vermelho): comparecimento e voto perto de 100% ao mesmo tempo. Cor mais forte = mais seções.</p>
+    <div class="pa-chart" id="chart-fp" data-source="fingerprint"></div>
+  </div>
+
+  <h2 class="pa-section" id="integridade">Conferências que não dependem de estatística</h2>
+  <div class="pa-card">
+    <h2>Checagens de integridade dos boletins</h2>
+    <p class="pa-note">Cada verificação é certo ou errado. As 60 violações de horário vêm de urnas do MT que usam o relógio de Brasília em municípios de outro fuso: um limite da ferramenta, não dos dados.</p>
+    <div class="pa-tablewrap">
+      <table class="pa-t" id="tbl-integrity" data-source="integrity" data-row-key="verificacao">
+        <thead><tr><th data-field="verificacao">Código</th><th data-field="descricao">Verificação</th><th class="num" data-field="testado">Testado</th><th class="num" data-field="violacoes">Violações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="pa-card" id="metodo">
+    <h2>Como a perícia foi feita</h2>
+    <div class="pa-method">
+      <div><h3>Princípio</h3><p>Todo contato deixa rastro (princípio de Locard). Uma urna adulterada destoaria das salas vizinhas da mesma escola, que têm os mesmos eleitores do bairro.</p></div>
+      <div><h3>Regras antes dos dados</h3><p>O método foi calibrado na eleição de 2022, que revelou e corrigiu um falso alarme causado por filas, e foi congelado antes de olhar 2026.</p></div>
+      <div><h3>O que não cobre</h3><p>A perícia examina transmissão e totalização. Não verifica o software dentro da urna: isso só seria possível com voto impresso e auditoria por amostragem.</p></div>
+    </div>
+  </div>
+
+  <footer class="pa-foot">
+    Autor: Eduardo Wizentier. Análise e código desenvolvidos com Claude Opus 5.5 (Anthropic). Dados: TSE, dados abertos e site de resultados.
+    Código, método e todos os resultados, inclusive os erros corrigidos no caminho:
+    <a href="https://github.com/Wizen-Labs/tally-forensics">github.com/Wizen-Labs/tally-forensics</a>
+  </footer>
+</div>
+
+<script>
+(function () {
+  const nf = new Intl.NumberFormat('pt-BR');
+  const nf1 = new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 3 });
+  const fmt = { urnas_periciadas: nf.format, maior_pausa_2026_min: nf.format, maior_pausa_2022_min: nf.format,
+    locais_comparados: nf.format, diferenca_soma_boletins_flavio: nf.format, diferenca_soma_boletins_lula: nf.format,
+    p_teste_principal: v => new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(v),
+    efeito_teste_principal_pp: v => nf1.format(v) };
+  const toMin = c => { const [h, m] = c.split(':').map(Number); return h * 60 + m; };
+  const clockLabel = m => `${Math.floor(m / 60)}h${String(m % 60).padStart(2, '0')}`;
+  const css = n => getComputedStyle(document.getElementById('dash-root')).getPropertyValue(n).trim();
+
+  function fail(el) { el.innerHTML = ''; const d = document.createElement('div'); d.className = 'pa-fail'; d.textContent = 'Falha ao carregar'; el.appendChild(d); }
+  function unskel(sel) { document.querySelectorAll(sel).forEach(e => e.classList.remove('dash-skeleton')); }
+
+  function drawKpis() {
+    const k = dash.data('kpis');
+    const marks = document.querySelectorAll('[data-source="kpis"]');
+    if (k.status !== 'ok') { if (k.status === 'error') unskel('[data-source="kpis"]'); return; }
+    const byMetric = Object.fromEntries(k.data.map(r => [r.metric, Number(r.value)]));
+    marks.forEach(el => {
+      const m = (el.getAttribute('data-where') || '').split('=')[1];
+      if (m in byMetric) el.textContent = (fmt[m] || nf.format)(byMetric[m]);
+      el.classList.remove('dash-skeleton');
+    });
+  }
+
+  function drawReception() {
+    const box = document.getElementById('chart-reception');
+    const r = dash.data('reception'), p = dash.data('pauses');
+    if (r.status === 'error' || p.status === 'error') return fail(box);
+    if (r.status !== 'ok' || p.status !== 'ok') { box.innerHTML = ''; return; }
+    const rows = r.data.map(d => ({ m: toMin(d.clock), a: Number(d.y2026), b: Number(d.y2022) }));
+    const W = Math.max(320, box.clientWidth), H = 300;
+    const M = { t: 12, r: 16, b: 28, l: 48 };
+    box.innerHTML = '';
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('class', 'pa-draw');
+    const x = d3.scaleLinear([d3.min(rows, d => d.m), d3.max(rows, d => d.m)], [M.l, W - M.r]);
+    const y = d3.scaleLinear([0, d3.max(rows, d => Math.max(d.a, d.b)) * 1.05], [H - M.b, M.t]);
+    svg.append('g').selectAll('line').data(y.ticks(5)).join('line')
+      .attr('x1', M.l).attr('x2', W - M.r).attr('y1', d => y(d)).attr('y2', d => y(d))
+      .attr('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 1);
+    // official national-panel freeze (TSE statement): a fixed reference, not data
+    svg.append('rect').attr('x', x(toMin('19:14'))).attr('width', x(toMin('20:04')) - x(toMin('19:14')))
+      .attr('y', M.t).attr('height', H - M.b - M.t).attr('fill', 'var(--cds-chart-reference)').attr('opacity', .12);
+    p.data.filter(d => String(d.election).includes('2026')).forEach(d => {
+      svg.append('rect').attr('x', x(toMin(d.start))).attr('width', Math.max(2, x(toMin(d.end)) - x(toMin(d.start))))
+        .attr('y', M.t).attr('height', H - M.b - M.t).attr('fill', 'var(--cds-chart-status-critical)').attr('opacity', .22);
+    });
+    const line = k => d3.line().x(d => x(d.m)).y(d => y(d[k]));
+    svg.append('path').datum(rows).attr('d', line('b')).attr('fill', 'none').attr('stroke', 'var(--cds-chart-muted)')
+      .attr('stroke-width', 1.5).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    svg.append('path').datum(rows).attr('d', line('a')).attr('fill', 'none').attr('stroke', dash.colors[0])
+      .attr('stroke-width', 2).attr('stroke-linejoin', 'round').attr('stroke-linecap', 'round');
+    const xt = d3.range(17 * 60, 21 * 60 + 31, W < 560 ? 60 : 30);
+    const ax = svg.append('g').attr('transform', `translate(0,${H - M.b})`)
+      .call(d3.axisBottom(x).tickValues(xt).tickFormat(clockLabel).tickSizeOuter(0));
+    ax.attr('font-size', null).attr('font-family', null); ax.select('.domain').attr('stroke', 'var(--cds-chart-axis)'); ax.selectAll('line').attr('stroke', 'var(--cds-chart-axis)');
+    const ay = svg.append('g').attr('transform', `translate(${M.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(nf.format).tickSize(0));
+    ay.attr('font-size', null).attr('font-family', null); ay.select('.domain').remove(); ay.selectAll('text').attr('dx', '-4');
+    // tooltip
+    const tip = document.createElement('div'); tip.className = 'pa-tip'; tip.hidden = true; box.appendChild(tip);
+    const dot = svg.append('circle').attr('r', 3.5).attr('fill', dash.colors[0]).attr('opacity', 0);
+    const rule = svg.append('line').attr('y1', M.t).attr('y2', H - M.b).attr('stroke', 'var(--cds-chart-axis)').attr('opacity', 0);
+    svg.append('rect').attr('x', M.l).attr('y', M.t).attr('width', W - M.l - M.r).attr('height', H - M.t - M.b).attr('fill', 'transparent')
+      .on('mousemove', ev => {
+        const [mx] = d3.pointer(ev); const m = Math.round(x.invert(mx));
+        const d = rows.find(q => q.m === m); if (!d) return;
+        dot.attr('cx', x(d.m)).attr('cy', y(d.a)).attr('opacity', 1); rule.attr('x1', x(d.m)).attr('x2', x(d.m)).attr('opacity', .5);
+        tip.innerHTML = '';
+        const h = document.createElement('div'); h.className = 'pa-tip-head'; h.textContent = clockLabel(d.m); tip.appendChild(h);
+        [['2026', d.a, dash.colors[0]], ['2022', d.b, 'var(--cds-chart-muted)']].forEach(([n, v, c]) => {
+          const l = document.createElement('div'); const s = document.createElement('span'); s.className = 'pa-sw'; s.style.background = c;
+          l.appendChild(s); l.appendChild(document.createTextNode(`${n}: ${nf.format(v)} boletins`)); tip.appendChild(l);
+        });
+        tip.hidden = false;
+        const bw = box.clientWidth, px = (x(d.m) / W) * bw;
+        tip.style.left = Math.min(Math.max(0, px + 10), bw - tip.offsetWidth) + 'px'; tip.style.top = '8px';
+      })
+      .on('mouseleave', () => { tip.hidden = true; dot.attr('opacity', 0); rule.attr('opacity', 0); });
+    const leg = document.getElementById('leg-reception'); leg.innerHTML = '';
+    [['1º turno 2026', dash.colors[0]], ['1º turno 2022 (referência)', 'var(--cds-chart-muted)']].forEach(([n, c]) => {
+      const s = document.createElement('span'); const sw = document.createElement('span'); sw.className = 'pa-sw'; sw.style.background = c;
+      s.appendChild(sw); s.appendChild(document.createTextNode(n)); leg.appendChild(s);
+    });
+  }
+
+  function drawPauses() {
+    const t = dash.data('pauses'), tb = document.querySelector('#tbl-pauses tbody');
+    tb.innerHTML = '';
+    if (t.status !== 'ok') return;
+    t.data.forEach(d => {
+      const tr = document.createElement('tr');
+      [d.election, d.start.replace(':', 'h'), d.end.replace(':', 'h'), nf.format(d.minutes)].forEach((v, i) => {
+        const td = document.createElement('td'); td.textContent = v; if (i === 3) td.className = 'num'; tr.appendChild(td);
+      });
+      tr.setAttribute('data-key', `${encodeURIComponent(d.election)},${encodeURIComponent(d.start)}`);
+      tb.appendChild(tr);
+    });
+  }
+
+  function drawTests() {
+    const box = document.getElementById('chart-tests'), t = dash.data('window_tests');
+    if (t.status === 'error') return fail(box);
+    if (t.status !== 'ok') { box.innerHTML = ''; return; }
+    const rows = t.data.map(d => ({ ...d, e: Number(d.efeito_pp), p: Number(d.p) }));
+    const W = Math.max(300, box.clientWidth), rowH = 30, M = { t: 8, r: 70, b: 26, l: 8 };
+    box.innerHTML = '';
+    const tmp = d3.select(box).append('svg').attr('width', 0).attr('height', 0);
+    const labW = d3.max(rows, d => { const n = tmp.append('text').attr('font-size', 11).text(d.janela).node(); const w = n.getComputedTextLength(); n.remove(); return w; });
+    tmp.remove();
+    const stacked = W < 520;
+    const left = stacked ? M.l : M.l + labW + 12;
+    const H = M.t + rows.length * rowH * (stacked ? 1.6 : 1) + M.b;
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('class', 'pa-draw');
+    const lim = Math.max(0.3, d3.max(rows, d => Math.abs(d.e)) * 1.3);
+    const x = d3.scaleLinear([-lim, lim], [left, W - M.r]);
+    svg.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', M.t).attr('y2', H - M.b).attr('stroke', 'var(--cds-chart-reference)').attr('stroke-dasharray', '3 3');
+    rows.forEach((d, i) => {
+      const yy = M.t + (i + .5) * rowH * (stacked ? 1.6 : 1);
+      const ly = stacked ? yy - 9 : yy + 4, dy = stacked ? yy + 7 : yy;
+      svg.append('text').attr('x', stacked ? left : left - 12).attr('y', ly).attr('text-anchor', stacked ? 'start' : 'end')
+        .attr('fill', d.papel === 'principal' ? 'var(--color-fg)' : 'var(--color-fg-muted)').text(d.janela);
+      svg.append('line').attr('x1', x(0)).attr('x2', x(d.e)).attr('y1', dy).attr('y2', dy).attr('stroke', 'var(--cds-chart-grid)').attr('stroke-width', 2);
+      svg.append('circle').attr('cx', x(d.e)).attr('cy', dy).attr('r', d.papel === 'principal' ? 6 : 4.5)
+        .attr('fill', d.papel === 'principal' ? dash.colors[0] : 'var(--cds-chart-muted)');
+      svg.append('text').attr('x', W - M.r + 8).attr('y', dy + 4).text(`p = ${new Intl.NumberFormat('pt-BR', { maximumFractionDigits: 2 }).format(d.p)}`);
+    });
+    const ax = svg.append('g').attr('transform', `translate(0,${H - M.b})`)
+      .call(d3.axisBottom(x).ticks(5).tickFormat(v => `${nf1.format(v)} p.p.`).tickSizeOuter(0));
+    ax.attr('font-size', null).attr('font-family', null); ax.select('.domain').attr('stroke', 'var(--cds-chart-axis)'); ax.selectAll('line').attr('stroke', 'var(--cds-chart-axis)');
+  }
+
+  function drawFingerprint() {
+    const box = document.getElementById('chart-fp'), f = dash.data('fingerprint');
+    if (f.status === 'error') return fail(box);
+    if (f.status !== 'ok') { box.innerHTML = ''; return; }
+    const rows = f.data.map(d => ({ c: d.candidato, t: Number(d.comparecimento), s: Number(d.votos), n: Number(d.secoes) }));
+    const cands = [...new Set(rows.map(d => d.c))];
+    const W = Math.max(320, box.clientWidth), stacked = W < 640;
+    const pw = stacked ? W : (W - 24) / 2, ph = Math.min(300, pw * 0.85), M = { t: 22, r: 8, b: 30, l: 40 };
+    const H = stacked ? 2 * (ph + 12) : ph;
+    box.innerHTML = '';
+    const svg = d3.select(box).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('class', 'pa-draw');
+    const op = d3.scaleSqrt([1, d3.max(rows, d => d.n)], [0.08, 1]);
+    cands.forEach((c, i) => {
+      const ox = stacked ? 0 : i * (pw + 24), oy = stacked ? i * (ph + 12) : 0;
+      const g = svg.append('g').attr('transform', `translate(${ox},${oy})`);
+      const x = d3.scaleLinear([40, 100], [M.l, pw - M.r]), y = d3.scaleLinear([0, 100], [ph - M.b, M.t]);
+      const bw = x(42) - x(40), bh = y(0) - y(2);
+      g.append('text').attr('x', M.l).attr('y', 12).attr('fill', 'var(--color-fg)').attr('font-size', 12).text(c);
+      g.selectAll('rect.c').data(rows.filter(d => d.c === c)).join('rect').attr('class', 'c')
+        .attr('x', d => x(d.t)).attr('y', d => y(d.s + 2)).attr('width', bw + .5).attr('height', bh + .5)
+        .attr('fill', dash.colors[i]).attr('fill-opacity', d => op(d.n));
+      g.append('rect').attr('x', x(96)).attr('y', y(100)).attr('width', x(100) - x(96)).attr('height', y(96) - y(100))
+        .attr('fill', 'none').attr('stroke', 'var(--cds-chart-status-critical)').attr('stroke-width', 1.5);
+      const ax = g.append('g').attr('transform', `translate(0,${ph - M.b})`).call(d3.axisBottom(x).ticks(4).tickFormat(v => v + '%').tickSizeOuter(0));
+      ax.attr('font-size', null).attr('font-family', null); ax.select('.domain').attr('stroke', 'var(--cds-chart-axis)'); ax.selectAll('line').attr('stroke', 'var(--cds-chart-axis)');
+      const ay = g.append('g').attr('transform', `translate(${M.l},0)`).call(d3.axisLeft(y).ticks(5).tickFormat(v => v + '%').tickSize(0));
+      ay.attr('font-size', null).attr('font-family', null); ay.select('.domain').remove(); ay.selectAll('text').attr('dx', '-4');
+      g.append('text').attr('x', pw - M.r).attr('y', ph - 2).attr('text-anchor', 'end').text('comparecimento →');
+    });
+  }
+
+  function drawIntegrity() {
+    const t = dash.data('integrity'), tb = document.querySelector('#tbl-integrity tbody');
+    tb.innerHTML = '';
+    if (t.status !== 'ok') return;
+    t.data.forEach(d => {
+      const tr = document.createElement('tr');
+      [d.verificacao, d.descricao, nf.format(d.testado), nf.format(d.violacoes)].forEach((v, i) => {
+        const td = document.createElement('td'); td.textContent = v; if (i >= 2) td.className = 'num';
+        if (i === 3) td.style.color = Number(d.violacoes) === 0 ? 'var(--color-ok)' : 'var(--color-warn)';
+        tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+  }
+
+  dash.onData(() => { drawKpis(); drawReception(); drawPauses(); drawTests(); drawFingerprint(); drawIntegrity(); });
+})();
+</script>

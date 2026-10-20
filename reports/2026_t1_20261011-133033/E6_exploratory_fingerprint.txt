@@ -1,0 +1,5 @@
+﻿figure -> C:\Users\USER\cloude_cloud\tally-forensics-kit\reports\2026_t1_20261011-133033\E6_fingerprint_both_candidates.png
+2026 #22: sections in corner (turnout>=95% & share>=95%): 1 of 497,750 | corr(turnout, share) = -0.059
+2026 #13: sections in corner (turnout>=95% & share>=95%): 26 of 497,750 | corr(turnout, share) = +0.069
+2022 #22: sections in corner (turnout>=95% & share>=95%): 0 of 470,902 | corr(turnout, share) = +0.024
+2022 #13: sections in corner (turnout>=95% & share>=95%): 22 of 470,902 | corr(turnout, share) = -0.043
