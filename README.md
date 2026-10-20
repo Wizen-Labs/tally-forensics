@@ -23,6 +23,11 @@ explain. He also made the method decisions and reviewed the work.
 
 **Data.** All data come from TSE's public open-data and results services.
 
+**Phase B: live run-off projection.** A separate pre-registration, frozen on 2026-10-20, covers a live statistical
+projection of the run-off from the first sections counted. Its files stay private until after the election. Their
+SHA-256 hashes and an OpenTimestamps proof are in [`commitments/`](commitments/), so anyone can check afterwards
+that nothing was changed.
+
 ## Quick start
 ```bash
 python -m venv .venv
@@ -57,7 +62,8 @@ The reports are written to `reports/<year>_t<turn>_<timestamp>/`:
 | `tally/analyze.py` | Pre-registered run and report |
 | `tally/live.py` | Live collector of TSE's results site (minute-by-minute, content-addressed archive) |
 | `exploratory/` | Exploratory analyses, outside the pre-registration |
-| `PREREGISTRATION_ROUND2.md` | Round-2 audit protocol (frozen by 2026-10-24) |
+| `PREREGISTRATION_ROUND2.md` | Round-2 audit protocol (frozen 2026-10-20, tag `round2-prereg`) |
+| `commitments/` | Phase B (live projection): file hashes and timestamp proof, to be checked after the election |
 | `entendaMe.md` | Step-by-step explanation in Portuguese |
 | `config/` | Sources and analysis parameters (data, not code) |
 | `tests/` | Synthetic elections with known truth: power and false-alarm tests |

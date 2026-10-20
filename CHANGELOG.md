@@ -3,6 +3,8 @@
 ## v0.6.0 · 2026-10-20 (round-2 protocol frozen)
 - `PREREGISTRATION_ROUND2.md` and `config/round2_forensics.json` are frozen (tag `round2-prereg`; hashes in
   FINDINGS).
+- `commitments/`: phase B (the live run-off projection) is announced and committed by hash, with an
+  OpenTimestamps proof; `tools/ots_stamp.py`.
 
 ## v0.5.0 · 2026-10-11 (round-2 audit protocol; repository reorganised)
 - The round-2 audit protocol is `PREREGISTRATION_ROUND2.md` with `config/round2_forensics.json`.

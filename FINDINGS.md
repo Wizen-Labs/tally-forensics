@@ -114,6 +114,9 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
   - `tally/integrity.py`: `0cef79490b0d1ecfc5540ec936f63d296d23d55765a0e7a7953055f353d0ebe1`
   - `tally/live.py`: `521df435477fc2190a47100a7de81d31ddd851e2e8a182b4d0604329418e4101`
 - From here on, any change to these files is a logged deviation.
+- **Phase B (live projection of the run-off), frozen at the same time,** is committed by hash in `commitments/`.
+  Its OpenTimestamps proof (the `.ots` file there) was submitted at 2026-10-20T14:27+01:00. The files
+  will be published after the election.
 
 ## Confirmatory (2026, round 1)
 
