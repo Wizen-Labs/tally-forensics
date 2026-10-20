@@ -14,6 +14,7 @@ exact content:
 - `round2_projection.sha256` lists the SHA-256 of every frozen phase-B file, in `sha256sum` format.
 - `round2_projection.sha256.ots` is an [OpenTimestamps](https://opentimestamps.org) proof that the list existed on
   2026-10-20. It was submitted at 14:27 (UTC+1) to four public calendars, which anchor it in the Bitcoin blockchain.
+  It is **anchored in Bitcoin block 972,335** (mined 2026-10-20 13:57:43 UTC), and again in block 972,338.
 
 **Verify the timestamp** with the standard client:
 ```bash

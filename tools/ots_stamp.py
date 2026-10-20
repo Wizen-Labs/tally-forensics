@@ -38,17 +38,23 @@ def stamp(path: str) -> None:
     print(f"wrote {path}.ots (sha256 {dtf.file_digest.hex()}), {ok} calendars")
 
 
+def walk(ts):
+    """Every sub-timestamp of the proof tree, depth first."""
+    yield ts
+    for child in ts.ops.values():
+        yield from walk(child)
+
+
 def upgrade(ots_path: str) -> None:
     with open(ots_path, "rb") as fd:
         dtf = DetachedTimestampFile.deserialize(StreamDeserializationContext(fd))
     done = 0
-    for sub in list(dtf.timestamp.all_attestations()):
-        stamp_, att = sub
-        if isinstance(att, PendingAttestation):
+    for ts in list(walk(dtf.timestamp)):
+        for att in [a for a in ts.attestations if isinstance(a, PendingAttestation)]:
             try:
-                stamp_.merge(RemoteCalendar(att.uri).get_timestamp(stamp_.msg, timeout=15))
+                ts.merge(RemoteCalendar(att.uri).get_timestamp(ts.msg, timeout=15))
                 done += 1
-            except Exception as e:
+            except Exception as e:                      # not yet in a block: the calendar answers "not found"
                 print("pending:", att.uri, type(e).__name__)
     with open(ots_path, "wb") as fd:
         dtf.serialize(StreamSerializationContext(fd))
