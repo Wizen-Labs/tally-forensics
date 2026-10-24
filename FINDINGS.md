@@ -254,3 +254,12 @@ zero events, Brazil only, from the first reception until 99.5% had been received
   - **Lesson:** from now on, freezes are git tags, so any later change is visible as a diff. The covariate adjustment (METHODOLOGY §4.2) was added during calibration, before the freeze and before any
 2026 analysis. That is allowed by §7.
 
+- **2026-10-24 (phase B, presentation only, found in the final pre-election test).**
+  - What changed: in the media card (`make_card` in the backup system's `colab/tally_colab.py`; the same in the
+    teaching notebook and in `tools/card_local.py`), rows logged before the first result are no longer drawn.
+  - Why: those rows have a raw share of 0%, which pulled the chart's axis down to 0% and flattened the projection
+    line.
+  - What did not change: the model, the publication gate, the interval and the logged projections.
+  - Verification: the committed version is the one at tag `round2-prereg`. Both versions will be published, so the
+    hash in `commitments/` still verifies against the frozen file. The diff is three lines.
+
