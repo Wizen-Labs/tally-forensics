@@ -153,6 +153,31 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
   before this addendum was written, and one of its example logs was checked by hand. Its method is independent of
   this one.
 
+## Round-2 addendum H8r2: signature search (PREREGISTRATION_ROUND2_SIGNATURES.md)
+- **Why:** the box is a black box. Its BU, RDV and log come from the same software, so consistency checks
+  (H1r2–H7r2) cannot show that it counted correctly. The author asked for a search for **signatures**: patterns
+  that independent human voters would not produce.
+  - Box logs, S1–S7: votes too fast, manual enablings, periodicity, repeated voter trails, fingerprint scores,
+    synchrony across boxes, software load.
+  - Section transfers from round 1 to round 2, T1–T4: too homogeneous, too uniform, against 2022.
+- **Stance:** the project never states that the result is correct.
+  - If no signature is found, the result is **"no signature found so far"**, with these data and methods. Other
+    methods and analyses will follow.
+  - A signature is reported as an "unexplained pattern", with its sections listed for a physical check.
+- **Design:** the UFs are split at random (seed 20261026) into a discovery half and a locked confirmation half.
+  - The hunt in the discovery half is free, and every look is logged.
+  - Each candidate signature is written as a test and timestamped, then run once on the confirmation half.
+- **When fixed:** 2026-10-26T22:28Z (19:28 BRT), **before** TSE published any round-2 bweb file and before any
+  per-section round-2 figure was analysed.
+  - Seen before fixing: the national totals of both rounds, and the event vocabulary and round-1 lines of one RJ
+    log.
+  - The synthetic tests found one defect in T3 (false alarms on clean data). It was fixed before the freeze.
+- **Hashes** (`commitments/round2_signatures.sha256`, OpenTimestamps proof submitted to 4 calendars):
+  - `PREREGISTRATION_ROUND2_SIGNATURES.md`: `f1278be56979d8a7d3fe6bea9d274156cd10782704c20e4de31f0574db9c8f56`
+  - `tally/signatures.py`: `db7de504a0069f0e4f21481ad6c730447be4f7633e867060d9bdf53fd32b4666`
+  - `tally/full_logs.py`: `df2af2bed7043ade9afa48ef317b41cb1681181a526b02e204c47b87441eecf3`
+  - `tests/test_signatures.py`: `2dddf40f551e20b2a3e03aaa2f154c8435a8e1448b4e8e5f66ddcd43237fd8fa`
+
 ## Confirmatory (2026, round 1)
 
 ### F1 · 2026-10-11 · full run, protocol frozen (v0.2, `reports/2026_t1_20261011-133033`)

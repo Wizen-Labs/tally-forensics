@@ -13,6 +13,10 @@
 - Round-2 addendum H7r2 (ballot-box logs vs bweb): `PREREGISTRATION_ROUND2_LOGS.md` and `tally/urna_logs.py`,
   fixed and timestamped on 2026-10-26 before TSE published the round-2 bweb files
   (`commitments/round2_logs.sha256`). `exploratory/e8_urna_logs_2026r2.py` fetches the logs.
+- Round-2 addendum H8r2 (signature search in box logs and section transfers):
+  `PREREGISTRATION_ROUND2_SIGNATURES.md`, `tally/signatures.py`, `tally/full_logs.py` and
+  `tests/test_signatures.py`, fixed and timestamped on 2026-10-26 before TSE published the round-2 bweb files
+  (`commitments/round2_signatures.sha256`). If no signature is found, the result is "no signature found so far".
 
 ## v0.5.0 · 2026-10-11 (round-2 audit protocol; repository reorganised)
 - The round-2 audit protocol is `PREREGISTRATION_ROUND2.md` with `config/round2_forensics.json`.
