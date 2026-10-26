@@ -6,6 +6,14 @@
 - `commitments/`: phase B (the live run-off projection) is announced and committed by hash, with an
   OpenTimestamps proof; `tools/ots_stamp.py`.
 
+## Unreleased
+- Round-2 addendum H6r2 (sections with extended voting hours): `PREREGISTRATION_ROUND2_EXTENSION.md` and
+  `tally/extension.py`, fixed and timestamped on 2026-10-25 before TSE published the round-2 bweb files
+  (`commitments/round2_extension.sha256`).
+- Round-2 addendum H7r2 (ballot-box logs vs bweb): `PREREGISTRATION_ROUND2_LOGS.md` and `tally/urna_logs.py`,
+  fixed and timestamped on 2026-10-26 before TSE published the round-2 bweb files
+  (`commitments/round2_logs.sha256`). `exploratory/e8_urna_logs_2026r2.py` fetches the logs.
+
 ## v0.5.0 · 2026-10-11 (round-2 audit protocol; repository reorganised)
 - The round-2 audit protocol is `PREREGISTRATION_ROUND2.md` with `config/round2_forensics.json`.
 - The CLI can be extended by optional `tally/cli_*.py` modules and runs without them.

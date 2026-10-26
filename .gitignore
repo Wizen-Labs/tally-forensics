@@ -6,3 +6,4 @@ data/interim/
 data/live/
 *.part
 *.bad
+data/urna_logs/

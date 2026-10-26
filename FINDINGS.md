@@ -127,12 +127,31 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
   - **Correction (2026-10-26):** §0 of the addendum says "about half of sections counted". That is wrong: about
     50% was the count when the addendum was proposed (20:30 BRT); at the time it was fixed and timestamped it was
     about 86%. The hashed file is left unchanged; this note is the correction. It does not affect the tests, which
-    use section-level data that did not exist yet. The tests use section-level data only. This is an addendum, not part of the
-  20 October freeze, and is reported as such.
+    use section-level data that did not exist yet.
+- The tests use section-level data only. This is an addendum, not part of the 20 October freeze, and is reported
+  as such.
 - **Hashes** (`commitments/round2_extension.sha256`, OpenTimestamps proof submitted to 4 calendars at 23:59 UTC):
   - `PREREGISTRATION_ROUND2_EXTENSION.md`: `5e85ad817803083f799c35aff7608b153554aefdb76bdc6da45094179d4d07dc`
   - `tally/extension.py`: `3fa9ac6cf0dbc2272666fb5375e86dc52bb53d6f0c6987212b2317aa68c4d09b`
 - The code was checked on synthetic data only, before fixing. The 2022 calibration (§4) runs before the 2026 data.
+
+## Round-2 addendum H7r2: ballot-box logs vs ballot-box reports (PREREGISTRATION_ROUND2_LOGS.md)
+- **Why:** voting was extended on election day, and the author asked for a stricter audit by two independent
+  methods, cross-checked.
+  - TSE also publishes each box's event log, with a time for every vote, on its results site.
+  - H7r2 checks, section by section, that the logs agree with the bweb files: coverage, votes, close time, box
+    number and the extended set.
+  - It also reruns H6r2 with the extended flag taken from the logs.
+- **When fixed:** 2026-10-26T15:53Z (12:53 BRT), **before** TSE published any round-2 bweb file. TSE's open-data
+  catalogue listed round-1 files only, which was checked just before stamping.
+  - Before fixing, only Roraima's logs were examined, and only against **round-1** bweb. That calibration is
+    reported in §4 of the addendum.
+- **Hashes** (`commitments/round2_logs.sha256`, OpenTimestamps proof submitted to 4 calendars):
+  - `PREREGISTRATION_ROUND2_LOGS.md`: `690269f3b68fcd1f27a5fffbc9a1159da65efd24fbeafc775186c1be100046f1`
+  - `tally/urna_logs.py`: `84b077535d3443fc0b5733a0be4bd99747506e0acf83eea95f3057aa0b48b51c`
+- A third party (repository "urnas-tardias") published a log-based count of late votes on 26 Oct. It was read
+  before this addendum was written, and one of its example logs was checked by hand. Its method is independent of
+  this one.
 
 ## Confirmatory (2026, round 1)
 
