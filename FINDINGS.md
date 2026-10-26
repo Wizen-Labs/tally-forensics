@@ -118,6 +118,18 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
   Its OpenTimestamps proof (the `.ots` file there) was submitted at 2026-10-20T14:27+01:00. The files
   will be published after the election.
 
+## Round-2 addendum H6r2: extended voting hours (PREREGISTRATION_ROUND2_EXTENSION.md)
+- **Why:** on 25 Oct 2026 TSE extended voting until 19:00 BRT in some places. The author asked for a check of
+  the extended sections, for transparency.
+- **When fixed:** 2026-10-25T23:59:34Z (20:59 BRT), during the count. Partial **municipal** results had been seen
+  (about 50% of sections counted), but **before** TSE published any round-2 bweb file: TSE's open-data catalogue
+  listed round-1 files only. The tests use section-level data only. This is an addendum, not part of the
+  20 October freeze, and is reported as such.
+- **Hashes** (`commitments/round2_extension.sha256`, OpenTimestamps proof submitted to 4 calendars at 23:59 UTC):
+  - `PREREGISTRATION_ROUND2_EXTENSION.md`: `5e85ad817803083f799c35aff7608b153554aefdb76bdc6da45094179d4d07dc`
+  - `tally/extension.py`: `3fa9ac6cf0dbc2272666fb5375e86dc52bb53d6f0c6987212b2317aa68c4d09b`
+- The code was checked on synthetic data only, before fixing. The 2022 calibration (§4) runs before the 2026 data.
+
 ## Confirmatory (2026, round 1)
 
 ### F1 · 2026-10-11 · full run, protocol frozen (v0.2, `reports/2026_t1_20261011-133033`)
