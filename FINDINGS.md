@@ -122,8 +122,12 @@ The base is `https://resultados.tse.jus.br/oficial/`. The 2026 round-1 files are
 - **Why:** on 25 Oct 2026 TSE extended voting until 19:00 BRT in some places. The author asked for a check of
   the extended sections, for transparency.
 - **When fixed:** 2026-10-25T23:59:34Z (20:59 BRT), during the count. Partial **municipal** results had been seen
-  (about 50% of sections counted), but **before** TSE published any round-2 bweb file: TSE's open-data catalogue
-  listed round-1 files only. The tests use section-level data only. This is an addendum, not part of the
+  (about 86% of sections counted), but **before** TSE published any round-2 bweb file: TSE's open-data catalogue
+  listed round-1 files only.
+  - **Correction (2026-10-26):** §0 of the addendum says "about half of sections counted". That is wrong: about
+    50% was the count when the addendum was proposed (20:30 BRT); at the time it was fixed and timestamped it was
+    about 86%. The hashed file is left unchanged; this note is the correction. It does not affect the tests, which
+    use section-level data that did not exist yet. The tests use section-level data only. This is an addendum, not part of the
   20 October freeze, and is reported as such.
 - **Hashes** (`commitments/round2_extension.sha256`, OpenTimestamps proof submitted to 4 calendars at 23:59 UTC):
   - `PREREGISTRATION_ROUND2_EXTENSION.md`: `5e85ad817803083f799c35aff7608b153554aefdb76bdc6da45094179d4d07dc`
