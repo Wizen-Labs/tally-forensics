@@ -6,6 +6,11 @@
         "stamp": "051020261403",
         "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_1t_{uf}_{stamp}.zip",
         "dataset_page": "https://dadosabertos.tse.jus.br/dataset/resultados-2026-boletim-de-urna"
+      },
+      "2": {
+        "stamp": "261020260742",
+        "url": "https://cdn.tse.jus.br/estatistica/sead/eleicoes/eleicoes2026/buweb/bweb_2t_{uf}_{stamp}.zip",
+        "dataset_page": "https://dadosabertos.tse.jus.br/dataset/ (per-UF resources 'Boletim de Urna - Segundo turno - 26.10.2026')"
       }
     },
     "2022": {

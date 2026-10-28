@@ -1,0 +1,68 @@
+D 1 {'D_r1_A': {'tested': 830, 'flagged': 0, 'min_p': 0.027395042539022883}, 'D_r1_B1': {'tested': 830, 'flagged': 17, 'min_p': 2.8827624615247037e-68}, 'D_r1_B2': {'tested': 417, 'flagged': 11, 'min_p': 7.792159410173369e-123}}
+D 2 {'D_r2_A': {'tested': 618, 'flagged': 0, 'min_p': 0.0018160702542761864}, 'D_r2_B1': {'tested': 618, 'flagged': 0, 'min_p': 0.009079326510939102}, 'D_r2_B2': {'tested': 310, 'flagged': 0, 'min_p': 0.01835205430379099}}
+C 1 {'C_r1_A': {'tested': 845, 'flagged': 0, 'min_p': 0.027395403805358758}, 'C_r1_B1': {'tested': 845, 'flagged': 23, 'min_p': 5.2919733747972244e-169}, 'C_r1_B2': {'tested': 424, 'flagged': 14, 'min_p': 0.0}}
+C 2 {'C_r2_A': {'tested': 623, 'flagged': 0, 'min_p': 0.0018684865656676075}, 'C_r2_B1': {'tested': 623, 'flagged': 0, 'min_p': 0.013002880716938002}, 'C_r2_B2': {'tested': 313, 'flagged': 0, 'min_p': 5.6890187110860056e-05}}
+{
+ "D_r1_A": {
+  "tested": 830,
+  "flagged": 0,
+  "min_p": 0.027395042539022883
+ },
+ "D_r1_B1": {
+  "tested": 830,
+  "flagged": 17,
+  "min_p": 2.8827624615247037e-68
+ },
+ "D_r1_B2": {
+  "tested": 417,
+  "flagged": 11,
+  "min_p": 7.792159410173369e-123
+ },
+ "D_r2_A": {
+  "tested": 618,
+  "flagged": 0,
+  "min_p": 0.0018160702542761864
+ },
+ "D_r2_B1": {
+  "tested": 618,
+  "flagged": 0,
+  "min_p": 0.009079326510939102
+ },
+ "D_r2_B2": {
+  "tested": 310,
+  "flagged": 0,
+  "min_p": 0.01835205430379099
+ },
+ "C_r1_A": {
+  "tested": 845,
+  "flagged": 0,
+  "min_p": 0.027395403805358758
+ },
+ "C_r1_B1": {
+  "tested": 845,
+  "flagged": 23,
+  "min_p": 5.2919733747972244e-169
+ },
+ "C_r1_B2": {
+  "tested": 424,
+  "flagged": 14,
+  "min_p": 0.0
+ },
+ "C_r2_A": {
+  "tested": 623,
+  "flagged": 0,
+  "min_p": 0.0018684865656676075
+ },
+ "C_r2_B1": {
+  "tested": 623,
+  "flagged": 0,
+  "min_p": 0.013002880716938002
+ },
+ "C_r2_B2": {
+  "tested": 313,
+  "flagged": 0,
+  "min_p": 5.6890187110860056e-05
+ },
+ "coincident_round2": [],
+ "decision": "no signature found so far"
+}

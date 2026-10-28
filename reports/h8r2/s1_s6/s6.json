@@ -1,0 +1,30 @@
+{
+ "D": {
+  "1": {
+   "max_sync": 0,
+   "minute": null,
+   "p": 1.0,
+   "n_spikes": 0
+  },
+  "2": {
+   "max_sync": 0,
+   "minute": null,
+   "p": 1.0,
+   "n_spikes": 0
+  }
+ },
+ "C": {
+  "1": {
+   "max_sync": 0,
+   "minute": null,
+   "p": 1.0,
+   "n_spikes": 0
+  },
+  "2": {
+   "max_sync": 0,
+   "minute": null,
+   "p": 1.0,
+   "n_spikes": 0
+  }
+ }
+}

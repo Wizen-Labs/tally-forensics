@@ -1,0 +1,42 @@
+{
+ "bweb_sections": 499205,
+ "log_sections": 499248,
+ "H7a": {
+  "bweb_without_log": 0,
+  "log_without_bweb": 43
+ },
+ "H7b": {
+  "fail": 1464,
+  "explained_box_replaced": 1422,
+  "unexplained": 42
+ },
+ "H7c": {
+  "fail": 0,
+  "explained_box_replaced": 0,
+  "unexplained": 0
+ },
+ "H7d": {
+  "fail": 32,
+  "explained_box_replaced": 0,
+  "unexplained": 32
+ },
+ "H7e": {
+  "fail": 11,
+  "explained_box_replaced": 0,
+  "unexplained": 11
+ },
+ "extended_sections": {
+  "bweb": 7612,
+  "log": 7613
+ },
+ "X1_bu_emission_vs_bweb": {
+  "joined": 499176,
+  "equal": 6,
+  "within_60s": 430819,
+  "over_60s": 68357
+ },
+ "X2_votes_bweb_vs_bu_file": {
+  "joined": 499174,
+  "differ": 0
+ }
+}

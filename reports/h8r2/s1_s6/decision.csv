@@ -1,0 +1,15 @@
+half,detector,flagged,control,expected,p,ratio_ok,p_holm,half_ok,signature
+D,S1,414,1210,0.01,1.0,False,1.0,False,False
+D,S2a,14,21,0.01,0.912267375504598,False,1.0,False,False
+D,S2b,17,41,0.01,0.9995691088797289,False,1.0,False,False
+D,S3,17,38,0.01,0.9986663688085701,False,1.0,False,False
+D,S4,0,0,0.01,1.0,False,1.0,False,False
+D,S5,1178,0,0.01,0.0,True,0.0,True,True
+D,S6,0,0,0.01,1.0,False,1.0,False,False
+C,S1,635,2459,0.01,1.0,False,1.0,False,False
+C,S2a,12,10,0.01,0.4159059524536133,False,1.0,False,False
+C,S2b,13,21,0.01,0.9392752575222403,False,1.0,False,False
+C,S3,28,13,0.01,0.013766577914793743,True,0.08259946748876246,False,False
+C,S4,0,0,0.01,1.0,False,1.0,False,False
+C,S5,1100,0,0.01,0.0,True,0.0,True,True
+C,S6,0,0,0.01,1.0,False,1.0,False,False

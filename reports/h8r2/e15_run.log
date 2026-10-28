@@ -1,0 +1,51 @@
+check ac: S4 (0 repeated blocks in round 2) and S5 (55 boxes) identical to the frozen functions
+499,176 logs; round 2 kept 483,035, round 1 kept 483,030, paired 476,429
+national round-1 score deciles: [5.0, 10.0, 32.0, 50.0, 68.0, 86.0, 107.0, 132.0, 167.0]
+S1 done
+chunks 10/101
+chunks 20/101
+chunks 30/101
+chunks 40/101
+chunks 50/101
+chunks 60/101
+chunks 70/101
+chunks 80/101
+chunks 90/101
+chunks 100/101
+D: S4 and S6 done
+C: S4 and S6 done
+   half detector  flagged  control  expected         p  ratio_ok    p_holm  half_ok  signature
+0     D       S1      414     1210      0.01  1.000000     False  1.000000    False      False
+1     D      S2a       14       21      0.01  0.912267     False  1.000000    False      False
+2     D      S2b       17       41      0.01  0.999569     False  1.000000    False      False
+3     D       S3       17       38      0.01  0.998666     False  1.000000    False      False
+4     D       S4        0        0      0.01  1.000000     False  1.000000    False      False
+5     D       S5     1178        0      0.01  0.000000      True  0.000000     True       True
+6     D       S6        0        0      0.01  1.000000     False  1.000000    False      False
+7     C       S1      635     2459      0.01  1.000000     False  1.000000    False      False
+8     C      S2a       12       10      0.01  0.415906     False  1.000000    False      False
+9     C      S2b       13       21      0.01  0.939275     False  1.000000    False      False
+10    C       S3       28       13      0.01  0.013767      True  0.082599    False      False
+11    C       S4        0        0      0.01  1.000000     False  1.000000    False      False
+12    C       S5     1100        0      0.01  0.000000      True  0.000000     True       True
+13    C       S6        0        0      0.01  1.000000     False  1.000000    False      False
+half  detector        rnd
+C     S1:flag         1      2459
+                      2       635
+      S2:flag_down    1        10
+      S2:flag_run_r1  1        21
+      S2:flag_run_r2  2        13
+      S2:flag_up      2        12
+      S3:flag         1        13
+                      2        28
+      S5:flag         2      1100
+D     S1:flag         1      1210
+                      2       414
+      S2:flag_down    1        21
+      S2:flag_run_r1  1        41
+      S2:flag_run_r2  2        17
+      S2:flag_up      2        14
+      S3:flag         1        38
+                      2        17
+      S5:flag         2      1178
+done

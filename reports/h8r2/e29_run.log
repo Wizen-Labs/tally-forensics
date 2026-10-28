@@ -1,0 +1,36 @@
+
+== calibration_2022_natural_placebo: 470866 sections, 333 extended
+  H6a_within_municipality      d_share      stat_pp=0.11 p=0.34466553344665535 reject=False 
+  H6a_within_municipality      d_turnout    stat_pp=-0.287 p=0.025597440255974404 reject=False 
+  H6a_within_municipality      d_blank_null stat_pp=-0.113 p=0.21197880211978803 reject=False 
+  H6b_across_municipalities    d_share      stat_pp=None p=None reject=False 
+  H6b_across_municipalities    d_turnout    stat_pp=None p=None reject=False 
+  H6b_across_municipalities    d_blank_null stat_pp=None p=None reject=False 
+  H6c_turnout_outliers         d_turnout    stat_pp=None p=6.632111306520334e-05 reject=True flagged=6/333
+
+== 2026_primary: 497708 sections, 7612 extended
+  H6a_within_municipality      d_share      stat_pp=0.049 p=0.028597140285971403 reject=False 
+  H6a_within_municipality      d_turnout    stat_pp=0.185 p=9.999000099990002e-05 reject=True 
+  H6a_within_municipality      d_blank_null stat_pp=0.083 p=9.999000099990002e-05 reject=True 
+  H6b_across_municipalities    d_share      stat_pp=-0.178 p=0.40485951404859516 reject=False 
+  H6b_across_municipalities    d_turnout    stat_pp=-1.415 p=0.0660933906609339 reject=False 
+  H6b_across_municipalities    d_blank_null stat_pp=-0.485 p=0.043795620437956206 reject=False 
+  H6c_turnout_outliers         d_turnout    stat_pp=None p=0.059911034143445986 reject=False flagged=22/7612
+
+== 2026_sens_1800: 497708 sections, 7086 extended
+  H6a_within_municipality      d_share      stat_pp=0.029 p=0.2186781321867813 reject=False 
+  H6a_within_municipality      d_turnout    stat_pp=0.182 p=9.999000099990002e-05 reject=True 
+  H6a_within_municipality      d_blank_null stat_pp=0.093 p=9.999000099990002e-05 reject=True 
+  H6b_across_municipalities    d_share      stat_pp=-0.172 p=0.41995800419958 reject=False 
+  H6b_across_municipalities    d_turnout    stat_pp=-1.418 p=0.0654934506549345 reject=False 
+  H6b_across_municipalities    d_blank_null stat_pp=-0.485 p=0.0418958104189581 reject=False 
+  H6c_turnout_outliers         d_turnout    stat_pp=None p=0.03212477932260344 reject=False flagged=22/7086
+
+== 2026_sens_local_clock: 497708 sections, 7598 extended
+  H6a_within_municipality      d_share      stat_pp=0.048 p=0.034596540345965404 reject=False 
+  H6a_within_municipality      d_turnout    stat_pp=0.185 p=9.999000099990002e-05 reject=True 
+  H6a_within_municipality      d_blank_null stat_pp=0.084 p=0.00019998000199980003 reject=True 
+  H6b_across_municipalities    d_share      stat_pp=-0.178 p=0.40485951404859516 reject=False 
+  H6b_across_municipalities    d_turnout    stat_pp=-1.415 p=0.0660933906609339 reject=False 
+  H6b_across_municipalities    d_blank_null stat_pp=-0.485 p=0.043795620437956206 reject=False 
+  H6c_turnout_outliers         d_turnout    stat_pp=None p=0.02209167758902099 reject=False flagged=24/7598

@@ -59,3 +59,11 @@ period. This makes "freeze" objective: in round 1 it could only be taken from pr
 `PREREGISTRATION_ROUND2.md`, `config/round2_forensics.json`, `tally/temporal.py`, `tally/residuals.py`,
 `tally/integrity.py`, `tally/live.py`.
 
+<!-- phase2:start -->
+## 5. Phase 2: live projection (sealed until after the election)
+A second, separate pre-registration covers a live projection of the run-off result from the first sections
+counted. It is kept private until after the election.
+- **Its SHA-256 will be published here at the freeze** (by 2026-10-24), before the election.
+- **After the election** the document and its code will be made public, so anyone can check that they match this
+  hash (commit–reveal).
+<!-- phase2:end -->

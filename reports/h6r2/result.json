@@ -1,0 +1,331 @@
+[
+ {
+  "label": "calibration_2022_natural_placebo",
+  "cutoff": "17:30",
+  "close_col": "DT_ENCERRAMENTO_BRT",
+  "sections": 470866,
+  "extended": 333,
+  "tests": [
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_share",
+    "municipalities": 251,
+    "n_extended": 333,
+    "n_on_time": 125543,
+    "statistic": 0.0010976045174984743,
+    "p_value": 0.34466553344665535,
+    "reject_bonferroni": false,
+    "statistic_pp": 0.11
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_turnout",
+    "municipalities": 251,
+    "n_extended": 333,
+    "n_on_time": 125543,
+    "statistic": -0.002865553818282886,
+    "p_value": 0.025597440255974404,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.287
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_blank_null",
+    "municipalities": 251,
+    "n_extended": 333,
+    "n_on_time": 125543,
+    "statistic": -0.001128548217147307,
+    "p_value": 0.21197880211978803,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.113
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_share",
+    "n_treated": 0,
+    "n_control": 5569,
+    "strata": 0,
+    "statistic": null,
+    "p_value": null,
+    "reject_bonferroni": false
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_turnout",
+    "n_treated": 0,
+    "n_control": 5569,
+    "strata": 0,
+    "statistic": null,
+    "p_value": null,
+    "reject_bonferroni": false
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_blank_null",
+    "n_treated": 0,
+    "n_control": 5569,
+    "strata": 0,
+    "statistic": null,
+    "p_value": null,
+    "reject_bonferroni": false
+   },
+   {
+    "test": "H6c_turnout_outliers",
+    "n_extended": 333,
+    "n_flagged": 6,
+    "expected_rate": 0.0020000000000000018,
+    "p_value": 6.632111306520334e-05,
+    "reject_bonferroni": true
+   }
+  ]
+ },
+ {
+  "label": "2026_primary",
+  "cutoff": "17:30",
+  "close_col": "DT_ENCERRAMENTO_BRT",
+  "sections": 497708,
+  "extended": 7612,
+  "tests": [
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_share",
+    "municipalities": 276,
+    "n_extended": 7584,
+    "n_on_time": 152175,
+    "statistic": 0.0004931303752501247,
+    "p_value": 0.028597140285971403,
+    "reject_bonferroni": false,
+    "statistic_pp": 0.049
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_turnout",
+    "municipalities": 276,
+    "n_extended": 7584,
+    "n_on_time": 152175,
+    "statistic": 0.0018511071778897796,
+    "p_value": 9.999000099990002e-05,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.185
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_blank_null",
+    "municipalities": 276,
+    "n_extended": 7584,
+    "n_on_time": 152175,
+    "statistic": 0.0008345850458576624,
+    "p_value": 9.999000099990002e-05,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.083
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_share",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.0017771144669392683,
+    "p_value": 0.40485951404859516,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.178
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_turnout",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.014146664599726628,
+    "p_value": 0.0660933906609339,
+    "reject_bonferroni": false,
+    "statistic_pp": -1.415
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_blank_null",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.004852338094095383,
+    "p_value": 0.043795620437956206,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.485
+   },
+   {
+    "test": "H6c_turnout_outliers",
+    "n_extended": 7612,
+    "n_flagged": 22,
+    "expected_rate": 0.0020000000000000018,
+    "p_value": 0.059911034143445986,
+    "reject_bonferroni": false
+   }
+  ]
+ },
+ {
+  "label": "2026_sens_1800",
+  "cutoff": "18:00",
+  "close_col": "DT_ENCERRAMENTO_BRT",
+  "sections": 497708,
+  "extended": 7086,
+  "tests": [
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_share",
+    "municipalities": 172,
+    "n_extended": 7058,
+    "n_on_time": 109639,
+    "statistic": 0.0002927226362361403,
+    "p_value": 0.2186781321867813,
+    "reject_bonferroni": false,
+    "statistic_pp": 0.029
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_turnout",
+    "municipalities": 172,
+    "n_extended": 7058,
+    "n_on_time": 109639,
+    "statistic": 0.0018187349465117115,
+    "p_value": 9.999000099990002e-05,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.182
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_blank_null",
+    "municipalities": 172,
+    "n_extended": 7058,
+    "n_on_time": 109639,
+    "statistic": 0.0009284184240618207,
+    "p_value": 9.999000099990002e-05,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.093
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_share",
+    "n_treated": 6,
+    "n_control": 110,
+    "strata": 3,
+    "statistic": -0.001721288886222573,
+    "p_value": 0.41995800419958,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.172
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_turnout",
+    "n_treated": 6,
+    "n_control": 110,
+    "strata": 3,
+    "statistic": -0.014183644803454904,
+    "p_value": 0.0654934506549345,
+    "reject_bonferroni": false,
+    "statistic_pp": -1.418
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_blank_null",
+    "n_treated": 6,
+    "n_control": 110,
+    "strata": 3,
+    "statistic": -0.00485327081007969,
+    "p_value": 0.0418958104189581,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.485
+   },
+   {
+    "test": "H6c_turnout_outliers",
+    "n_extended": 7086,
+    "n_flagged": 22,
+    "expected_rate": 0.0020000000000000018,
+    "p_value": 0.03212477932260344,
+    "reject_bonferroni": false
+   }
+  ]
+ },
+ {
+  "label": "2026_sens_local_clock",
+  "cutoff": "17:30",
+  "close_col": "DT_ENCERRAMENTO",
+  "sections": 497708,
+  "extended": 7598,
+  "tests": [
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_share",
+    "municipalities": 262,
+    "n_extended": 7560,
+    "n_on_time": 145251,
+    "statistic": 0.00047749506987140915,
+    "p_value": 0.034596540345965404,
+    "reject_bonferroni": false,
+    "statistic_pp": 0.048
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_turnout",
+    "municipalities": 262,
+    "n_extended": 7560,
+    "n_on_time": 145251,
+    "statistic": 0.0018514917377215208,
+    "p_value": 9.999000099990002e-05,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.185
+   },
+   {
+    "test": "H6a_within_municipality",
+    "metric": "d_blank_null",
+    "municipalities": 262,
+    "n_extended": 7560,
+    "n_on_time": 145251,
+    "statistic": 0.0008410230251051436,
+    "p_value": 0.00019998000199980003,
+    "reject_bonferroni": true,
+    "statistic_pp": 0.084
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_share",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.0017771144669392683,
+    "p_value": 0.40485951404859516,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.178
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_turnout",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.014146664599726628,
+    "p_value": 0.0660933906609339,
+    "reject_bonferroni": false,
+    "statistic_pp": -1.415
+   },
+   {
+    "test": "H6b_across_municipalities",
+    "metric": "d_blank_null",
+    "n_treated": 6,
+    "n_control": 109,
+    "strata": 3,
+    "statistic": -0.004852338094095383,
+    "p_value": 0.043795620437956206,
+    "reject_bonferroni": false,
+    "statistic_pp": -0.485
+   },
+   {
+    "test": "H6c_turnout_outliers",
+    "n_extended": 7598,
+    "n_flagged": 24,
+    "expected_rate": 0.0020000000000000018,
+    "p_value": 0.02209167758902099,
+    "reject_bonferroni": false
+   }
+  ]
+ }
+]

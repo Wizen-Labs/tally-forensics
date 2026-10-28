@@ -1,0 +1,67 @@
+{
+ "official_share_A_2026": 48.2148,
+ "bu_share_A_2026": 48.2149,
+ "bu_votes": {
+  "F2": 59825504,
+  "L2": 64255526
+ },
+ "missing_2026": 0,
+ "hash_status_2026": {
+  "Totalizado": 482654,
+  "Recebido": 16522
+ },
+ "2026": {
+  "r1_sections": 499206,
+  "r2_sections": 499176,
+  "joined": 499176,
+  "tested": 499174,
+  "phi": 1.0,
+  "R0_all": 1,
+  "R0": 1,
+  "R1": 7,
+  "R1s": 7,
+  "R2": 1,
+  "R1_composition_changed": 0
+ },
+ "2022": {
+  "r1_sections": 472028,
+  "r2_sections": 472028,
+  "joined": 472028,
+  "tested": 472016,
+  "phi": 1.0,
+  "R0_all": 0,
+  "R0": 0,
+  "R1": 24,
+  "R1s": 32,
+  "R2": 2,
+  "R1_composition_changed": 1
+ },
+ "coverage_2026": 0.9999,
+ "tests": {
+  "R0": {
+   "2026": [
+    1,
+    499174
+   ],
+   "2022": [
+    0,
+    472016
+   ],
+   "p": 0.5139818160360101,
+   "p_holm": 1.0
+  },
+  "R1": {
+   "2026": [
+    7,
+    499174
+   ],
+   "2022": [
+    24,
+    472016
+   ],
+   "p": 0.9997487768751461,
+   "p_holm": 1.0
+  }
+ },
+ "decision": "no signature found so far"
+}

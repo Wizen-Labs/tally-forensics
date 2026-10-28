@@ -1,0 +1,116 @@
+{
+ "sections": 499205,
+ "sections_tested": 497897,
+ "H3r2_reception_gaps": [
+  {
+   "start": "2026-10-25 17:08:00",
+   "end": "2026-10-25 19:03:00",
+   "minutes": 115
+  }
+ ],
+ "H4r2_official_from_archive": {
+  "22": 59826041,
+  "13": 64256232,
+  "generated": "25/10/2026 23:27:02"
+ },
+ "H4r2": [
+  {
+   "check": "I1",
+   "tested": 499205,
+   "violations": 0
+  },
+  {
+   "check": "I2",
+   "tested": 499205,
+   "violations": 0
+  },
+  {
+   "check": "I3",
+   "tested": 499205,
+   "violations": 0
+  },
+  {
+   "check": "I4",
+   "tested": 499205,
+   "violations": 0
+  },
+  {
+   "check": "I5",
+   "tested": 497897,
+   "violations": 0
+  },
+  {
+   "check": "I6",
+   "tested": 497897,
+   "violations": 8
+  },
+  {
+   "check": "I6b",
+   "tested": 497897,
+   "violations": 0
+  },
+  {
+   "check": "I7",
+   "tested": 497897,
+   "violations": 0
+  },
+  {
+   "check": "R-22",
+   "tested": 59826041,
+   "violations": 0
+  },
+  {
+   "check": "R-13",
+   "tested": 64256232,
+   "violations": 0
+  }
+ ],
+ "H5r2": {
+  "municipalities_live": 5757,
+  "municipalities_bu": 5715,
+  "joined": 5757,
+  "with_difference": 1673
+ },
+ "H2r2_candidate_periods": [
+  {
+   "start_brt": "2026-10-25 16:56:17.133000",
+   "end_brt": "2026-10-25 17:07:17.249000",
+   "minutes": 11.0,
+   "max_poll_gap_min": 0.5,
+   "share_received": 0.002,
+   "is_freeze": false
+  },
+  {
+   "start_brt": "2026-10-25 17:07:17.249000",
+   "end_brt": "2026-10-25 19:01:38.506000",
+   "minutes": 114.4,
+   "max_poll_gap_min": 0.5,
+   "share_received": 0.0002,
+   "is_freeze": false
+  },
+  {
+   "start_brt": "2026-10-25 22:46:43.289000",
+   "end_brt": "2026-10-25 23:11:43.320000",
+   "minutes": 25.0,
+   "max_poll_gap_min": 0.5,
+   "share_received": 0.0,
+   "is_freeze": false
+  },
+  {
+   "start_brt": "2026-10-25 23:11:43.320000",
+   "end_brt": "2026-10-25 23:23:43.334000",
+   "minutes": 12.0,
+   "max_poll_gap_min": 0.5,
+   "share_received": 0.0,
+   "is_freeze": false
+  }
+ ],
+ "H2r2": [],
+ "H1r2": {
+  "bins": 25,
+  "bonferroni_threshold": 0.0004,
+  "reject_bonferroni": 0,
+  "reject_nominal": 0,
+  "min_p": 0.015492253873063468
+ }
+}

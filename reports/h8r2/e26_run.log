@@ -1,0 +1,19 @@
+         size   sum
+group              
+control  3000  2802
+late     2957  2703
+group                               control  late
+cause                                            
+no full log                             198   254
+other printer event                       2    71
+power cycle                               0   160
+printer out of paper                      0    58
+printer out of paper + power cycle        0    17
+unclassified                           2800  2397
+votes computed after close, any box: 0
+cause                  other printer event  power cycle  printer out of paper  printer out of paper + power cycle  unclassified
+emit_minus_close_min                                                                                                           
+(10.0, 30.0]                            51           93                    38                                   5          1481
+(30.0, 60.0]                            13           39                    15                                   3           428
+(60.0, 120.0]                            5           21                     4                                   7           476
+(120.0, 1000000000.0]                    2            7                     1                                   2            12

@@ -1,0 +1,18 @@
+{
+  "_comment": "PHASE 2 (private until after the election). Round-2 live projection parameters; see PREREGISTRATION_ROUND2_PROJECTION.md. Frozen when protocol_frozen is true.",
+  "protocol_frozen": true,
+  "election_code": "6258",
+  "base": {"year": 2026, "turn": 1},
+  "candidates": {"A": {"nr": "22", "name": "Flavio Bolsonaro"}, "B": {"nr": "13", "name": "Lula"}},
+  "projection": {
+    "models": ["transfer_no_prior", "municipal_swing"],
+    "combine": "mean",
+    "proxy_for_counted_part": "proportional",
+    "min_pct_counted": 2.0,
+    "min_ufs_with_1pct": 24,
+    "_min_ufs_source": "owner's representativeness rule (FINDINGS P7, P11): at least 24 of the 27 UFs with >= 1% of their electorate counted; abroad is modelled but is not a UF",
+    "half_width_pp": 0.7,
+    "_half_width_source": "max |error| of the 2-model mean over checkpoints 2-50% in two backtests (2022 r1->r2 and 2022 r1->2026 r1) was 0.625 pp, rounded up to 0.7 (FINDINGS P5). An envelope of 12 observed errors, not a probabilistic guarantee.",
+    "poll_interval_s": 30
+  }
+}

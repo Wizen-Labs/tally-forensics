@@ -24,13 +24,19 @@ ots verify commitments/round2_projection.sha256.ots
 `tools/ots_stamp.py` stamps and upgrades proofs without the `ots` command, because that command does not run on
 Windows.
 
-**Verify the content after the reveal:** after the election the phase-B files will be published in this repository,
-unchanged. Then, from the repository root:
+**Revealed on 2026-10-28.** The phase-B files are now published in this repository. The frozen copies, taken from
+git tag `round2-prereg`, are in [`reveal_round2_prereg/`](reveal_round2_prereg/). Verify them with:
 ```bash
-sha256sum -c commitments/round2_projection.sha256
+cd commitments/reveal_round2_prereg
+sha256sum -c ../round2_projection.sha256
 ```
-Every line must print `OK`. Projection results are reported in full, including errors outside the interval.
+Every line must print `OK`. The election-night evaluation (FINDINGS P12) reports the projection results in full.
+
+**From the repository root,** 7 of the 8 lines print `OK`. `colab/tally_colab.py` fails there by design: three
+lines of the media card's drawing code changed on 2026-10-24, after the freeze and before the election. The change
+is presentation only and is disclosed in FINDINGS (Protocol deviations, 2026-10-24). The frozen version is the one
+in the folder above.
 
 **Note on `PREREGISTRATION_ROUND2.md`:** the hash in the list is that of the lab version, which has one extra
-section, §5, announcing phase B. That section is not in the published file, so this one line will only match after
-the reveal. The published file's own hash is in `FINDINGS.md`.
+section, §5, announcing phase B. Until the reveal, the published file omitted that section and had its own hash
+(in `FINDINGS.md`). Since the reveal, the published file is the lab version, and its line verifies.

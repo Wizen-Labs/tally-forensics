@@ -12,6 +12,11 @@
 
 Usamos **apenas dados públicos do TSE** para fazer uma **auditoria estatística**: verificar se a apuração do 1º
 turno de 2026 tem padrões que sugiram interferência, olhando o *lugar* e o *horário* em que cada urna foi contada.
+<!-- phase2:start -->
+
+Há também uma Parte B, a projeção ao vivo do 2º turno a partir de 2% a 5% das urnas. Ela ficou no laboratório
+privado até depois da eleição, com o hash publicado, e foi revelada em 28/10/2026.
+<!-- phase2:end -->
 
 ---
 
@@ -25,6 +30,12 @@ turno de 2026 tem padrões que sugiram interferência, olhando o *lugar* e o *ho
    do mesmo prédio, teste de permutação, calibração) foi desenvolvida com o Claude Opus 5.5.
 2. Todos os dados são públicos, do TSE. A análise e o código foram desenvolvidos com o Claude Opus 5.5, da
    Anthropic.
+<!-- phase2:start -->
+3. **A projeção em tempo real (Parte B):**
+   - um componente dela, o **modelo de swing municipal**, foi inspirado no trabalho de Rodrigo Mahlmeister,
+     divulgado pela NeoFeed;
+   - nenhum código dele foi usado; a implementação é independente.
+<!-- phase2:end -->
 
 ---
 
@@ -180,6 +191,59 @@ boletins de cada município.
 
 ---
 
+<!-- phase2:start -->
+## 5b. Parte B: a projeção ao vivo, passo a passo (fase 2)
+
+### Passo 1: o problema
+As primeiras urnas que chegam **não são uma amostra justa**. No 1º turno, com 2% apurado, Flávio aparecia com
+50,6%, mas terminou com 47,0%: o Paraná chega cedo e pesava 26% das primeiras urnas. **Extrapolar o parcial engana.**
+
+### Passo 2: a ideia, usar o 1º turno como régua
+Cada seção já votou três semanas antes. Sabemos quantos votos ela deu a Flávio, Lula, outros, brancos e nulos e
+quantos faltaram. O 2º turno de cada seção é estimado **a partir do 1º turno dela mesma**.
+
+### Passo 3: a matriz de transferência ("para onde vai cada grupo")
+Exemplo com números redondos:
+
+| Grupo no 1º turno | Vai para A no 2º | Vai para B no 2º |
+|---|---|---|
+| Eleitor de A | 97% | 1% |
+| Eleitor de B | 1% | 97% |
+| Eleitor dos outros (Cury, Caiado, Zema...) | ? | ? |
+| Branco/nulo | ? | ? |
+| Abstenção | ? | ? |
+
+As interrogações são estimadas **ao vivo**, comparando as seções já apuradas com o 1º turno delas. Uma seção com
+muitos eleitores de Caiado que dá mais votos a A do que seu 1º turno previa ensina para onde foi o eleitor de
+Caiado.
+
+As estimativas são feitas **em camadas**: Brasil → região → estado. Um estado com poucas urnas apuradas "pega
+emprestado" do nível acima.
+
+### Passo 4: o backtest, ensaiar com uma eleição que já aconteceu
+Reproduzimos o 2º turno de 2022 **na ordem real de chegada** das urnas e medimos o erro em cada momento:
+
+| Urnas apuradas | Parcial bruto | Nosso modelo (com votos por seção) |
+|---|---|---|
+| 2% | erro de 7 pontos | erro de 0,08 ponto |
+| 5% | erro de 4 pontos | erro de 0,09 ponto |
+
+### Passo 5: o limite honesto
+Testamos vários métodos usando só totais por município, inclusive um modelo de "swing por município":
+
+- com votos por seção, o erro é de cerca de **0,1 ponto**;
+- com totais por município, cerca de **0,5 ponto** na fatia de cada candidato, ou seja, cerca de 1 ponto na
+  diferença entre eles, com 2–5% apurado.
+
+**Tradução prática:** no dia 25 o modelo dará uma boa estimativa do percentual. Mas só poderá apontar o vencedor
+com segurança se a diferença for claramente maior que 1 ponto. O próprio resultado do Rodrigo no 1º turno (0,02
+em Flávio, 0,34 em Lula) cabe nessa faixa.
+
+Uma armadilha que evitamos: um ajuste que parecia ótimo em 2022 piorou em 2026. Por isso testamos **fora da
+amostra** (em dados que o modelo nunca viu) antes de confiar.
+
+<!-- phase2:end -->
+
 ---
 
 ## 6. Mapa do projeto (o que é cada arquivo)
@@ -201,6 +265,8 @@ boletins de cada município.
 | `tally/temporal.py` | Curva de chegada e teste de permutação |
 | `tally/geo.py` | Resumos por estado e município |
 | `tally/analyze.py` | Roda a auditoria completa e gera o relatório |
+| `tally/project.py` | Modelos de projeção (por seção, por município, swing) | <!-- phase2 -->
+| `tally/backtest.py` | Ensaios com eleições passadas | <!-- phase2 -->
 | `tally/live.py` | Coletor ao vivo |
 | `exploratory/` | Análises exploratórias, fora do pré-registro: a pausa de 27,5 min, a cobertura inicial, o que o TSE publica, a conferência do coletor |
 | `tests/` | Testes automáticos, muitos com "eleições inventadas" cuja resposta certa conhecemos |
@@ -214,6 +280,7 @@ boletins de cada município.
 ```bash
 .venv\Scripts\python -m pytest -q                                  # roda os testes
 .venv\Scripts\python -m tally all --year 2026 --all-ufs           # auditoria completa de 2026 (já feita)
+.venv\Scripts\python -m tally backtest --year 2022                # ensaio da projeção no 2º turno de 2022 <!-- phase2 -->
 .venv\Scripts\python -m tally live --election 6258 --interval 60  # coletor ao vivo do 2º turno
 ```
 
@@ -244,13 +311,33 @@ boletins de cada município.
 | **Confundidor** | Causa inocente que imita um efeito (ex.: fila) |
 | **Pré-registro** | Escrever as regras antes de ver os dados, para não ajustar depois |
 | **Hash** | "Impressão digital" de um arquivo; muda se um único byte mudar |
+| **Backtest** | Ensaio do modelo numa eleição passada, na ordem real dos fatos | <!-- phase2 -->
 | **Fora da amostra** | Testar em dados que não foram usados para construir o modelo |
+| **Matriz de transferência** | Tabela de "para onde foi" cada grupo de eleitores do 1º para o 2º turno | <!-- phase2 -->
+| **Regressão ecológica** | Deduzir comportamento de grupos a partir de totais (não vemos eleitores, só somas) | <!-- phase2 -->
+| **Swing** | Variação de um candidato entre duas eleições no mesmo lugar | <!-- phase2 -->
+| **Prior** | Palpite inicial que os dados corrigem; útil quando há pouca informação | <!-- phase2 -->
+| **Intervalo de 90%** | Faixa onde o resultado deve cair 9 em cada 10 vezes | <!-- phase2 -->
 
 ---
 
 ## 10. O pré-registro do 2º turno (`PREREGISTRATION_ROUND2.md`)
 
 São as regras escritas **antes** do dia 25, para que ninguém (nem nós) possa ajustar nada depois de ver o resultado.
+
+<!-- phase2:start -->
+**Projeção ao vivo:**
+- **Estimativa:** a média de dois modelos municipais (transferência e swing), nenhum com parâmetro "ajustado à
+  mão".
+- **Quando começa:** nada é mostrado antes de 2% das urnas apuradas.
+- **Margem:** ±0,7 ponto, o pior erro visto nos dois ensaios, arredondado para cima.
+- **Vencedor:** só é apontado se a faixa inteira ficar de um lado de 50%, ou seja, se a projeção estiver fora de
+  49,3%–50,7%.
+- **Registro:** cada minuto fica gravado. Depois comparamos com o resultado oficial e publicamos o erro, mesmo que
+  seja ruim.
+
+<!-- phase2:end -->
+A projeção (fase 2) tem um pré-registro próprio, selado: o hash dele foi publicado antes da eleição e o conteúdo foi revelado em 28/10/2026. <!-- phase2 -->
 
 **Auditoria depois da eleição:**
 - **Varredura:** todos os blocos de 10 minutos passam pelo mesmo teste "seção × vizinhas do prédio", com correção
@@ -270,9 +357,12 @@ bem num 2º turno sem incidentes.
 **Pronto:**
 - auditoria completa do 1º turno de 2026, sem sinal de interferência nos votos e com a pausa de 27,5 min
   documentada;
+- modelo de projeção, ensaiado em 2022 e testado fora da amostra em 2026; <!-- phase2 -->
 - coletor ao vivo, testado com o 1º turno, com conciliação exata.
 
 **Falta, antes de 25/10:**
+1. ~~escolher o modelo do 2º turno e a margem~~: feito, rascunho em `PREREGISTRATION_ROUND2.md` (±0,7 ponto); <!-- phase2 -->
+2. ~~ligar a projeção ao coletor~~: feito (`python -m tally live --election 6258 --interval 60 --project`); <!-- phase2 -->
 3. **o autor revisar e congelar o pré-registro** (até 24/10);
 4. no dia, ligar o coletor por volta das 16h55.
 

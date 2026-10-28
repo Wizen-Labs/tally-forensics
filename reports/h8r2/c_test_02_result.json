@@ -1,0 +1,13 @@
+{
+ "boxes_tested": 49730,
+ "flagged": 1100,
+ "flagged_moved": 1100,
+ "P1_share_up": 0.6709090909090909,
+ "P1": false,
+ "P2_abs_dlow_flagged": 0.3730786116812674,
+ "P2_abs_dlow_unflagged": 0.09022186032602174,
+ "P2": true,
+ "P3_manual_share_r2": 1.0,
+ "P3": true,
+ "decision": "P1 fails: common direction, lead opened"
+}

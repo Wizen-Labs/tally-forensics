@@ -1,0 +1,33 @@
+median minutes per stage
+             confirm_to_workers_end_min  workers_end_to_bu_report_min  bu_report_to_print_end_min  print_end_to_budat_min  confirm_to_budat_min
+group   rnd                                                                                                                                    
+control 1                           2.3                           0.0                         0.5                     0.3                   3.4
+        2                           2.0                           0.0                         0.2                     0.3                   2.7
+late    1                           2.3                           0.0                         0.6                     0.4                   3.8
+        2                          12.1                           0.0                         0.2                     0.7                  21.8
+
+boxes with a stage over 30 min
+             confirm_to_workers_end_min  workers_end_to_bu_report_min  bu_report_to_print_end_min  print_end_to_budat_min  confirm_to_budat_min
+group   rnd                                                                                                                                    
+control 1                             0                             0                           0                       1                     1
+        2                             0                             0                           0                       0                     0
+late    1                             1                             0                           3                       3                     9
+        2                           626                             0                          48                     290                  1031
+
+round 2, late group: hour (box clock) at which poll-worker registration ended, when it took > 30 min
+workers_end
+16      1
+17    223
+18    302
+19    100
+uf
+sp    232
+rj    184
+ba    109
+pe     79
+pb      5
+mg      3
+se      3
+pi      2
+rn      2
+ac      1

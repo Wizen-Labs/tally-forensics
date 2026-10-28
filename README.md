@@ -23,10 +23,21 @@ explain. He also made the method decisions and reviewed the work.
 
 **Data.** All data come from TSE's public open-data and results services.
 
+<!-- phase2:start -->
+**Phase 2: live projection.** A live projection of the run-off result was developed in the private lab, announced
+in public as "phase B" with hashes only from 2026-10-20, and revealed on 2026-10-28.
+
+**Credit (phase 2).** One component of the live run-off projection, the municipal swing model
+(`project.project_swing`), was inspired by Rodrigo Mahlmeister's live projection of the 2026 first round, as reported
+by [NeoFeed](https://neofeed.com.br/finde/como-um-pesquisador-brasileiro-criou-um-algoritmo-que-simulou-e-acertou-o-resultado-do-1o-turno/).
+No code from his project was used; this implementation is independent.
+<!-- phase2:end -->
+
 **Phase B: live run-off projection.** A separate pre-registration, frozen on 2026-10-20, covers a live statistical
-projection of the run-off from the first sections counted. Its files stay private until after the election. Their
-SHA-256 hashes and an OpenTimestamps proof are in [`commitments/`](commitments/), so anyone can check afterwards
-that nothing was changed.
+projection of the run-off from the first sections counted. Its files stayed private until after the election, with
+their SHA-256 hashes and an OpenTimestamps proof published in [`commitments/`](commitments/). They were revealed on
+2026-10-28; [`commitments/README.md`](commitments/README.md) explains how to check that nothing was changed. The
+election-night result is in [FINDINGS.md](FINDINGS.md) (P12).
 
 ## Quick start
 ```bash
